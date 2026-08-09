@@ -1,0 +1,43 @@
+{
+  "dataset": "hc3",
+  "splits": {
+    "test": {
+      "rows": 85431,
+      "machine_fraction": 0.31469841158361717,
+      "exact_duplicates": 6113,
+      "length_audit": {
+        "auroc_length_only": 0.7308674988629832,
+        "median_words_machine": 173.0,
+        "median_words_human": 83.0
+      },
+      "worst_artifact_offenders": [
+        {
+          "generator": "chatgpt",
+          "label": 1,
+          "n": 26885,
+          "sure_here": 0.0027896596615212942,
+          "as_an_ai": 7.439092430723452e-05,
+          "i_cannot_assist": 0.002008554956295332,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0007439092430723452,
+          "heres_a": 7.439092430723452e-05,
+          "worst_pattern_rate": 0.0027896596615212942
+        },
+        {
+          "generator": "human",
+          "label": 0,
+          "n": 58546,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 1.708058620571858e-05,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.0009565128275202404,
+          "worst_pattern_rate": 0.0009565128275202404
+        }
+      ]
+    }
+  }
+}

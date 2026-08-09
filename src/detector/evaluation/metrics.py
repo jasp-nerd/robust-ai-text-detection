@@ -27,8 +27,12 @@ def threshold_at_fpr(human_scores: ArrayLike, target_fpr: float) -> float:
         raise ValueError("need at least one human score to calibrate a threshold")
     if not 0.0 < target_fpr < 1.0:
         raise ValueError(f"target_fpr must be in (0, 1), got {target_fpr}")
-    # 'higher' guarantees the achieved FPR does not exceed the target on this sample.
-    return float(np.quantile(scores, 1.0 - target_fpr, method="higher"))
+    # At most floor(target_fpr * n) human scores may sit at or above the threshold.
+    # Descending order; the threshold is nudged just above the (k+1)-th largest score so
+    # the >= comparison downstream can never exceed the budget, ties included.
+    desc = np.sort(scores)[::-1]
+    k = int(np.floor(target_fpr * scores.size))
+    return float(np.nextafter(desc[k], np.inf))
 
 
 def tpr_at_fpr(

@@ -1,0 +1,237 @@
+{
+  "dataset": "mage",
+  "splits": {
+    "test": {
+      "rows": 60743,
+      "machine_fraction": 0.5017532884447591,
+      "exact_duplicates": 794,
+      "length_audit": {
+        "auroc_length_only": 0.5288432959478064,
+        "median_words_machine": 125.0,
+        "median_words_human": 119.0
+      },
+      "worst_artifact_offenders": [
+        {
+          "generator": "gpt-3.5-trubo",
+          "label": 1,
+          "n": 2264,
+          "sure_here": 0.0,
+          "as_an_ai": 0.022084805653710248,
+          "i_cannot_assist": 0.0066254416961130744,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.0008833922261484099,
+          "worst_pattern_rate": 0.022084805653710248
+        },
+        {
+          "generator": "65B",
+          "label": 1,
+          "n": 930,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.004301075268817204,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.0,
+          "worst_pattern_rate": 0.004301075268817204
+        },
+        {
+          "generator": "text-davinci-002",
+          "label": 1,
+          "n": 2170,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.004147465437788019,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.0004608294930875576,
+          "worst_pattern_rate": 0.004147465437788019
+        },
+        {
+          "generator": "13B",
+          "label": 1,
+          "n": 920,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.003260869565217391,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.0,
+          "worst_pattern_rate": 0.003260869565217391
+        },
+        {
+          "generator": "text-davinci-003",
+          "label": 1,
+          "n": 2208,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.0022644927536231885,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.0,
+          "worst_pattern_rate": 0.0022644927536231885
+        }
+      ]
+    },
+    "train": {
+      "rows": 319071,
+      "machine_fraction": 0.7075321793581992,
+      "exact_duplicates": 376,
+      "length_audit": {
+        "auroc_length_only": 0.49913631884948684,
+        "median_words_machine": 112.0,
+        "median_words_human": 121.0
+      },
+      "worst_artifact_offenders": [
+        {
+          "generator": "gpt-3.5-trubo",
+          "label": 1,
+          "n": 18154,
+          "sure_here": 5.5084278946788584e-05,
+          "as_an_ai": 0.02230913297344938,
+          "i_cannot_assist": 0.004186405199955933,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.0011567698578825603,
+          "worst_pattern_rate": 0.02230913297344938
+        },
+        {
+          "generator": "7B",
+          "label": 1,
+          "n": 7439,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.00443608011829547,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.00040328001075413364,
+          "worst_pattern_rate": 0.00443608011829547
+        },
+        {
+          "generator": "65B",
+          "label": 1,
+          "n": 7481,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.0044111749766074055,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.0004010159069643096,
+          "worst_pattern_rate": 0.0044111749766074055
+        },
+        {
+          "generator": "13B",
+          "label": 1,
+          "n": 7446,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.0042976094547408005,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.00040290088638195,
+          "worst_pattern_rate": 0.0042976094547408005
+        },
+        {
+          "generator": "30B",
+          "label": 1,
+          "n": 7479,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.004278646877924857,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.00040112314480545525,
+          "worst_pattern_rate": 0.004278646877924857
+        }
+      ]
+    },
+    "validation": {
+      "rows": 56792,
+      "machine_fraction": 0.49290393013100436,
+      "exact_duplicates": 31,
+      "length_audit": {
+        "auroc_length_only": 0.5258725559991934,
+        "median_words_machine": 115.0,
+        "median_words_human": 115.0
+      },
+      "worst_artifact_offenders": [
+        {
+          "generator": "gpt-3.5-trubo",
+          "label": 1,
+          "n": 2261,
+          "sure_here": 0.0,
+          "as_an_ai": 0.021229544449358692,
+          "i_cannot_assist": 0.007076514816452897,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.0017691287041132243,
+          "worst_pattern_rate": 0.021229544449358692
+        },
+        {
+          "generator": "13B",
+          "label": 1,
+          "n": 924,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.008658008658008658,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.0010822510822510823,
+          "worst_pattern_rate": 0.008658008658008658
+        },
+        {
+          "generator": "7B",
+          "label": 1,
+          "n": 916,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.004366812227074236,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.001091703056768559,
+          "worst_pattern_rate": 0.004366812227074236
+        },
+        {
+          "generator": "GLM130B",
+          "label": 1,
+          "n": 919,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.003264417845484222,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.001088139281828074,
+          "worst_pattern_rate": 0.003264417845484222
+        },
+        {
+          "generator": "65B",
+          "label": 1,
+          "n": 924,
+          "sure_here": 0.0,
+          "as_an_ai": 0.0,
+          "i_cannot_assist": 0.003246753246753247,
+          "chatml_tokens": 0.0,
+          "inst_tokens": 0.0,
+          "knowledge_cutoff": 0.0,
+          "heres_a": 0.0010822510822510823,
+          "worst_pattern_rate": 0.003246753246753247
+        }
+      ]
+    }
+  },
+  "train_test_leakage_rows": 24
+}
