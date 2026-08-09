@@ -1,0 +1,20 @@
+# Binoculars with the smallest matched base/instruct pair (~2GB) — fits the shared L4
+# next to the neighbor's 17GB job. Tests how far the Binoculars signal degrades with
+# observer/performer scale (the paper used Falcon-7B; 1.5B pair OOMed on the shared GPU).
+name: binoculars-qwen2.5-0.5b
+seed: 0
+model:
+  type: binoculars
+  observer: Qwen/Qwen2.5-0.5B
+  performer: Qwen/Qwen2.5-0.5B-Instruct
+  max_tokens: 512
+train: null
+eval:
+  - dataset: raid
+    split: eval
+  - dataset: mage
+    split: test
+    sample: 12000
+  - dataset: hc3
+    split: test
+    sample: 8000

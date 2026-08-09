@@ -1,0 +1,23 @@
+# ModernBERT-base fine-tune — the 2026-default backbone. Needs ~10GB (mostly-free L4).
+name: encoder-modernbert-base-mage
+seed: 0
+model:
+  type: encoder
+  model_name: answerdotai/ModernBERT-base
+  max_tokens: 512
+  batch_size: 16
+  grad_accum: 2
+  epochs: 1
+  lr: 3.0e-5
+train:
+  dataset: mage
+  split: train
+  filter_artifacts: true
+eval:
+  - dataset: mage
+    split: test
+  - dataset: hc3
+    split: test
+    sample: 8000
+  - dataset: raid
+    split: eval

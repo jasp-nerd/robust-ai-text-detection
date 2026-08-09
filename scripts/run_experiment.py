@@ -85,11 +85,13 @@ def main() -> None:
     parser.add_argument("--data", type=Path, default=Path("data/processed"))
     parser.add_argument("--out", type=Path, default=Path("results/runs"))
     parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--seed", type=int, default=None, help="override config seed (variance runs)")
     args = parser.parse_args()
 
     cfg = yaml.safe_load(args.config.read_text())
-    seed = cfg.get("seed", 0)
-    name = cfg["name"] + ("-smoke" if args.limit else "")
+    seed = args.seed if args.seed is not None else cfg.get("seed", 0)
+    cfg["seed"] = seed
+    name = cfg["name"] + (f"-seed{seed}" if args.seed is not None else "") + ("-smoke" if args.limit else "")
     run_dir = args.out / name
     run_dir.mkdir(parents=True, exist_ok=True)
 

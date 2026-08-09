@@ -1,0 +1,19 @@
+# Fast-DetectGPT, paper-faithful black-box config: sampler GPT-J-6B, scorer GPT-Neo-2.7B.
+# ~17.5GB fp16 — needs a mostly-free L4.
+name: fast-detect-gpt-gptj
+seed: 0
+model:
+  type: fast_detect_gpt
+  scorer: EleutherAI/gpt-neo-2.7B
+  sampler: EleutherAI/gpt-j-6B
+  max_tokens: 512
+train: null
+eval:
+  - dataset: raid
+    split: eval
+  - dataset: mage
+    split: test
+    sample: 12000
+  - dataset: hc3
+    split: test
+    sample: 8000
