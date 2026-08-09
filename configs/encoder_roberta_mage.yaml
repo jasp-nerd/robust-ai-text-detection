@@ -1,0 +1,24 @@
+# Vanilla fine-tuned RoBERTa-base, the honest supervised baseline (Shen et al. 2026 recipe:
+# full fine-tune, CE loss, lr 2e-5, 512 tokens). Sized for the shared VU L4 (~6GB free).
+name: encoder-roberta-base-mage
+seed: 0
+model:
+  type: encoder
+  model_name: roberta-base
+  max_tokens: 512
+  batch_size: 8
+  grad_accum: 4
+  epochs: 1
+  lr: 2.0e-5
+train:
+  dataset: mage
+  split: train
+  filter_artifacts: true
+eval:
+  - dataset: mage
+    split: test
+  - dataset: hc3
+    split: test
+    sample: 8000
+  - dataset: raid
+    split: eval

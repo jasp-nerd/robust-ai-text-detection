@@ -51,7 +51,7 @@ class FastDetectGPT:
             self.sample_model = AutoModelForCausalLM.from_pretrained(sampler, torch_dtype=dtype)
             self.sample_model.to(self.device).eval()
 
-    def fit(self, texts: list[str], labels: np.ndarray) -> "FastDetectGPT":
+    def fit(self, texts: list[str], labels: np.ndarray) -> FastDetectGPT:
         return self  # zero-shot: nothing to fit
 
     @torch.no_grad()

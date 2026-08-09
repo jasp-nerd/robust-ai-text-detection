@@ -32,6 +32,20 @@ def _fast_detect_gpt(cfg: dict, seed: int):
     )
 
 
+def _encoder(cfg: dict, seed: int):
+    from detector.models.encoder import EncoderDetector  # lazy: pulls in torch
+
+    return EncoderDetector(
+        model_name=cfg.get("model_name", "roberta-base"),
+        max_tokens=cfg.get("max_tokens", 512),
+        batch_size=cfg.get("batch_size", 8),
+        grad_accum=cfg.get("grad_accum", 4),
+        epochs=cfg.get("epochs", 1),
+        lr=float(cfg.get("lr", 2e-5)),
+        seed=seed,
+    )
+
+
 def _binoculars(cfg: dict, seed: int):
     from detector.models.binoculars import Binoculars  # lazy: pulls in torch
 
@@ -51,6 +65,7 @@ MODEL_TYPES = {
     ),
     "fast_detect_gpt": _fast_detect_gpt,
     "binoculars": _binoculars,
+    "encoder": _encoder,
 }
 
 
@@ -110,10 +125,9 @@ def main() -> None:
         scores = model.predict_scores(df["text"].to_list())
         scored = df.with_columns(pl.Series("score", np.asarray(scores)))
         scored = scored.with_columns(
-            (
-                pl.col("generator").is_in(sorted(train_generators))
-                | (pl.col("label") == 0)
-            ).alias("generator_seen")
+            (pl.col("generator").is_in(sorted(train_generators)) | (pl.col("label") == 0)).alias(
+                "generator_seen"
+            )
         )
         result = {
             "run": name,

@@ -11,8 +11,6 @@ Motivated by documented failures in this literature:
 
 from __future__ import annotations
 
-import re
-
 import polars as pl
 
 from detector.evaluation.metrics import auroc
@@ -52,12 +50,7 @@ def artifact_report(df: pl.DataFrame, text_col: str = "text") -> pl.DataFrame:
 
 
 def _normalized(text_col: str = "text") -> pl.Expr:
-    return (
-        pl.col(text_col)
-        .str.to_lowercase()
-        .str.replace_all(r"[^a-z0-9]+", " ")
-        .str.strip_chars()
-    )
+    return pl.col(text_col).str.to_lowercase().str.replace_all(r"[^a-z0-9]+", " ").str.strip_chars()
 
 
 def dedup_exact(df: pl.DataFrame, text_col: str = "text") -> tuple[pl.DataFrame, int]:
@@ -76,9 +69,7 @@ def dedup_exact(df: pl.DataFrame, text_col: str = "text") -> tuple[pl.DataFrame,
     return out, n0 - len(out)
 
 
-def cross_split_leakage(
-    train: pl.DataFrame, test: pl.DataFrame, text_col: str = "text"
-) -> int:
+def cross_split_leakage(train: pl.DataFrame, test: pl.DataFrame, text_col: str = "text") -> int:
     """Number of test rows whose normalized text also appears in train."""
     train_h = train.select(_normalized(text_col).hash().alias("_h"))
     test_h = test.select(_normalized(text_col).hash().alias("_h"))
@@ -92,9 +83,7 @@ def length_shortcut_audit(df: pl.DataFrame, text_col: str = "text") -> dict[str,
     AUROC near 0.5 = fine; substantially above/below = the split is length-confounded
     and length must be controlled (matching or stratification) before training.
     """
-    words = df.with_columns(
-        pl.col(text_col).str.split(" ").list.len().alias("_words")
-    )
+    words = df.with_columns(pl.col(text_col).str.split(" ").list.len().alias("_words"))
     machine = words.filter(pl.col("label") == 1)["_words"].to_numpy()
     human = words.filter(pl.col("label") == 0)["_words"].to_numpy()
     return {

@@ -37,13 +37,15 @@ class Binoculars:
         self.tokenizer = AutoTokenizer.from_pretrained(observer)
         perf_tok = AutoTokenizer.from_pretrained(performer)
         if self.tokenizer.get_vocab() != perf_tok.get_vocab():
-            raise ValueError("observer and performer must share a tokenizer (Binoculars requirement)")
+            raise ValueError(
+                "observer and performer must share a tokenizer (Binoculars requirement)"
+            )
         self.observer = AutoModelForCausalLM.from_pretrained(observer, torch_dtype=dtype)
         self.performer = AutoModelForCausalLM.from_pretrained(performer, torch_dtype=dtype)
         self.observer.to(self.device).eval()
         self.performer.to(self.device).eval()
 
-    def fit(self, texts: list[str], labels: np.ndarray) -> "Binoculars":
+    def fit(self, texts: list[str], labels: np.ndarray) -> Binoculars:
         return self  # zero-shot
 
     @torch.no_grad()

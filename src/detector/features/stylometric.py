@@ -47,9 +47,7 @@ def extract_features(text: str) -> np.ndarray:
     sent_lens = [len(_WORD_RE.findall(s)) for s in sentences] or [n_words]
     n_chars = len(text)
     char_counts = Counter(text)
-    char_entropy = -sum(
-        (c / n_chars) * math.log2(c / n_chars) for c in char_counts.values()
-    )
+    char_entropy = -sum((c / n_chars) * math.log2(c / n_chars) for c in char_counts.values())
     n_stop = sum(1 for w in words if w in ENGLISH_STOP_WORDS)
     values = {
         "type_token_ratio": len(counts) / n_words,

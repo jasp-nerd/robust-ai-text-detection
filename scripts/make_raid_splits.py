@@ -53,8 +53,10 @@ def main() -> None:
         f"eval: {len(eval_set):,} rows ({len(machine):,} machine / {len(human):,} human), "
         f"train_pool: {len(train_pool):,} rows"
     )
-    overlap = eval_set.select("source_id").unique().join(
-        train_pool.select("source_id").unique(), on="source_id", how="semi"
+    overlap = (
+        eval_set.select("source_id")
+        .unique()
+        .join(train_pool.select("source_id").unique(), on="source_id", how="semi")
     )
     assert overlap.height == 0, "source_id leakage between eval and train_pool"
     print("source_id leakage check: OK")

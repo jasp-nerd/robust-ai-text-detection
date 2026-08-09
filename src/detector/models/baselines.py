@@ -34,7 +34,7 @@ class TfidfLogReg:
             ]
         )
 
-    def fit(self, texts: list[str], labels: np.ndarray) -> "TfidfLogReg":
+    def fit(self, texts: list[str], labels: np.ndarray) -> TfidfLogReg:
         self.pipeline.fit(texts, labels)
         return self
 
@@ -53,7 +53,7 @@ class StylometricGBM:
         self._idx = [FEATURE_NAMES.index(f) for f in self.feature_names]
         self.clf = HistGradientBoostingClassifier(random_state=seed)
 
-    def fit(self, texts: list[str], labels: np.ndarray) -> "StylometricGBM":
+    def fit(self, texts: list[str], labels: np.ndarray) -> StylometricGBM:
         x = extract_matrix(texts)[:, self._idx]
         self.clf.fit(x, labels)
         return self
