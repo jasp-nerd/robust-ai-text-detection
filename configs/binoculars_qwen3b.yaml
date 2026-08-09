@@ -1,0 +1,22 @@
+# Binoculars mid-scale: Qwen2.5-3B base/instruct pair, fp16 (~12.4GB — fits the L4
+# without quantization). With the 0.5B pair this gives a two-point scale curve;
+# the paper's Falcon-7B results anchor the top end. (Falcon-7B 8-bit is blocked by a
+# transformers caching-allocator warmup bug that pre-allocates fp16-sized memory for
+# quantized models — see RESEARCH_LOG 2026-08-09.)
+name: binoculars-qwen2.5-3b
+seed: 0
+model:
+  type: binoculars
+  observer: Qwen/Qwen2.5-3B
+  performer: Qwen/Qwen2.5-3B-Instruct
+  max_tokens: 512
+train: null
+eval:
+  - dataset: raid
+    split: eval
+  - dataset: mage
+    split: test
+    sample: 12000
+  - dataset: hc3
+    split: test
+    sample: 8000

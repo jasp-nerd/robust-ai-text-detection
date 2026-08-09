@@ -49,6 +49,9 @@ class Binoculars:
             kwargs = {
                 "quantization_config": BitsAndBytesConfig(load_in_8bit=True),
                 "device_map": {"": 0},
+                # keep non-quantized modules (embeddings, lm_head, norms) in fp16 —
+                # letting them default to fp32 OOMed the second model of the pair
+                "torch_dtype": torch.float16,
             }
         self.observer = AutoModelForCausalLM.from_pretrained(observer, **kwargs)
         self.performer = AutoModelForCausalLM.from_pretrained(performer, **kwargs)
