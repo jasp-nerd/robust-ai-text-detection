@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Data & models — never commit raw datasets or weights
+data/
+models/
+*.ckpt
+*.safetensors
+*.pt
+
+# Notebooks: keep outputs out of diffs where possible
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
