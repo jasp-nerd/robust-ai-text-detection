@@ -1,2 +1,441 @@
-% References for the AI text detection project.
-% Populated during the literature review (Phase 1).
+% References for the robust AI-text detection project.
+% Compiled during the Phase 1 literature review, 2026-08-09.
+
+% ---------- Benchmarks & datasets ----------
+
+@inproceedings{dugan2024raid,
+  title     = {{RAID}: A Shared Benchmark for Robust Evaluation of Machine-Generated Text Detectors},
+  author    = {Dugan, Liam and Hwang, Alyssa and Trhl{\'i}k, Filip and Zhu, Andrew and Ludan, Josh Magnus and Xu, Hainiu and Ippolito, Daphne and Callison-Burch, Chris},
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  year      = {2024},
+  pages     = {12463--12492},
+  doi       = {10.18653/v1/2024.acl-long.674},
+  note      = {arXiv:2405.07940. Code: https://github.com/liamdugan/raid; leaderboard: https://raid-bench.xyz}
+}
+
+@inproceedings{li2024mage,
+  title     = {{MAGE}: Machine-generated Text Detection in the Wild},
+  author    = {Li, Yafu and Li, Qintong and Cui, Leyang and Bi, Wei and Wang, Zhilin and Wang, Longyue and Yang, Linyi and Shi, Shuming and Zhang, Yue},
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  year      = {2024},
+  pages     = {36--53},
+  doi       = {10.18653/v1/2024.acl-long.3},
+  note      = {arXiv:2305.13242. Data: https://huggingface.co/datasets/yaful/MAGE}
+}
+
+@inproceedings{wang2024m4gt,
+  title     = {{M4GT}-Bench: Evaluation Benchmark for Black-Box Machine-Generated Text Detection},
+  author    = {Wang, Yuxia and Mansurov, Jonibek and Ivanov, Petar and Su, Jinyan and Shelmanov, Artem and Tsvigun, Akim and Mohammed Afzal, Osama and Mahmoud, Tarek and Puccetti, Giovanni and Arnold, Thomas and Aji, Alham Fikri and Habash, Nizar and Gurevych, Iryna and Nakov, Preslav},
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  year      = {2024},
+  pages     = {3964--3992},
+  doi       = {10.18653/v1/2024.acl-long.218},
+  note      = {arXiv:2402.11175. Data: https://github.com/mbzuai-nlp/M4GT-Bench}
+}
+
+@inproceedings{he2024mgtbench,
+  title     = {{MGTBench}: Benchmarking Machine-Generated Text Detection},
+  author    = {He, Xinlei and Shen, Xinyue and Chen, Zeyuan and Backes, Michael and Zhang, Yang},
+  booktitle = {Proceedings of the 2024 ACM SIGSAC Conference on Computer and Communications Security (CCS)},
+  year      = {2024},
+  doi       = {10.1145/3658644.3670344},
+  note      = {arXiv:2303.14822. Code: https://github.com/xinleihe/MGTBench}
+}
+
+@article{guo2023hc3,
+  title   = {How Close is {ChatGPT} to Human Experts? Comparison Corpus, Evaluation, and Detection},
+  author  = {Guo, Biyang and Zhang, Xin and Wang, Ziyuan and Jiang, Minqi and Nie, Jinran and Ding, Yuxuan and Yue, Jianwei and Wu, Yupeng},
+  journal = {arXiv preprint arXiv:2301.07597},
+  year    = {2023},
+  note    = {Data: https://huggingface.co/datasets/Hello-SimpleAI/HC3}
+}
+
+@inproceedings{wu2024detectrl,
+  title     = {{DetectRL}: Benchmarking {LLM}-Generated Text Detection in Real-World Scenarios},
+  author    = {Wu, Junchao and Zhan, Runzhe and Wong, Derek F. and Yang, Shu and Yang, Xinyi and Yuan, Yulin and Chao, Lidia S.},
+  booktitle = {Advances in Neural Information Processing Systems 37 (Datasets and Benchmarks Track)},
+  year      = {2024},
+  note      = {arXiv:2410.23746}
+}
+
+@inproceedings{yu2025evobench,
+  title     = {{EvoBench}: Towards Real-world {LLM}-Generated Text Detection Benchmarking for Evolving Large Language Models},
+  author    = {Yu, Xiao and Yu, Yi and Liu, Dongrui and Chen, Kejiang and Zhang, Weiming and Yu, Nenghai and Shao, Jing},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2025},
+  year      = {2025},
+  pages     = {14605--14620},
+  note      = {Code/data: https://github.com/happy-Moer/EvoBench}
+}
+
+@article{ayoobi2025shield,
+  title   = {Beyond Easy Wins: A Text Hardness-Aware Benchmark for {LLM}-generated Text Detection},
+  author  = {Ayoobi, Navid and Shahriar, Sadat and Mukherjee, Arjun},
+  journal = {arXiv preprint arXiv:2507.15286},
+  year    = {2025},
+  note    = {Code: https://github.com/navid-aub/SHIELD-Benchmark}
+}
+
+@article{dycke2026aitdna,
+  title   = {'Your {AI} Text is not Mine': Redefining and Evaluating {AI}-generated Text Detection under Realistic Assumptions},
+  author  = {Dycke, Nils and Sakharova, Marina and Daheim, Nico and Gurevych, Iryna},
+  journal = {arXiv preprint arXiv:2606.04906},
+  year    = {2026},
+  note    = {Code: https://github.com/UKPLab/arxiv2026-aitdna; data: https://huggingface.co/datasets/UKPLab/AITDNA}
+}
+
+@inproceedings{bevendorff2026pan,
+  title     = {Overview of {PAN} 2026: Voight-Kampff Generative {AI} Detection, Text Watermarking, Multi-Author Writing Style Analysis, Generative Plagiarism Detection, and Reasoning Trajectory Detection},
+  author    = {Bevendorff, Janek and Fr{\"o}be, Maik and Greiner-Petter, Andr{\'e} and others},
+  booktitle = {Advances in Information Retrieval (ECIR / CLEF 2026)},
+  year      = {2026},
+  note      = {arXiv:2602.09147}
+}
+
+@article{dingfelder2025contamination,
+  title   = {Contamination in Generated Text Detection Benchmarks},
+  author  = {Dingfelder, Philipp and Riess, Christian},
+  journal = {arXiv preprint arXiv:2511.09200},
+  year    = {2025}
+}
+
+@article{zha2025padben,
+  title   = {{PADBen}: A Comprehensive Benchmark for Evaluating {AI} Text Detectors Against Paraphrase Attacks},
+  author  = {Zha, Yiwei and Min, Rui and Sushmita, Shanu},
+  journal = {arXiv preprint arXiv:2511.00416},
+  year    = {2025}
+}
+
+@article{macko2025ceaid,
+  title   = {{CEAID}: Benchmark of Multilingual Machine-Generated Text Detection Methods for Central European Languages},
+  author  = {Macko, Dominik and Kopal, Jakub},
+  journal = {arXiv preprint arXiv:2509.26051},
+  year    = {2025}
+}
+
+@article{quaremba2025wetbench,
+  title   = {{WETBench}: A Benchmark for Detecting Task-Specific Machine-Generated Text on {Wikipedia}},
+  author  = {Quaremba, Gerrit and Black, Elizabeth and Vrande{\v{c}}i{\'c}, Denny and Simperl, Elena},
+  journal = {arXiv preprint arXiv:2507.03373},
+  year    = {2025}
+}
+
+% ---------- Zero-shot / statistical methods ----------
+
+@inproceedings{hans2024binoculars,
+  title     = {Spotting {LLMs} With Binoculars: Zero-Shot Detection of Machine-Generated Text},
+  author    = {Hans, Abhimanyu and Schwarzschild, Avi and Cherepanova, Valeriia and Kazemi, Hamid and Saha, Aniruddha and Goldblum, Micah and Geiping, Jonas and Goldstein, Tom},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
+  year      = {2024},
+  note      = {arXiv:2401.12070. Code: https://github.com/ahans30/Binoculars}
+}
+
+@inproceedings{bao2024fastdetectgpt,
+  title     = {Fast-{DetectGPT}: Efficient Zero-Shot Detection of Machine-Generated Text via Conditional Probability Curvature},
+  author    = {Bao, Guangsheng and Zhao, Yanbin and Teng, Zhiyang and Yang, Linyi and Zhang, Yue},
+  booktitle = {The Twelfth International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  note      = {arXiv:2310.05130. Code: https://github.com/baoguangsheng/fast-detect-gpt}
+}
+
+@inproceedings{mitchell2023detectgpt,
+  title     = {{DetectGPT}: Zero-Shot Machine-Generated Text Detection using Probability Curvature},
+  author    = {Mitchell, Eric and Lee, Yoonho and Khazatsky, Alexander and Manning, Christopher D. and Finn, Chelsea},
+  booktitle = {Proceedings of the 40th International Conference on Machine Learning (ICML)},
+  year      = {2023},
+  note      = {arXiv:2301.11305}
+}
+
+@article{bao2026triospect,
+  title   = {Triospect: A Three-Dimensional Framework for Robust Statistical {AI}-Generated Text Detection Against Diverse Attacks},
+  author  = {Bao, Guangsheng and Rong, Lihua and Zhao, Yanbin and Yu, Xiao and Zhou, Qiji and Zhang, Yue},
+  journal = {arXiv preprint arXiv:2606.31074},
+  year    = {2026},
+  note    = {Code and Humanize-16K data: https://github.com/baoguangsheng/triospect}
+}
+
+@article{lacava2026luminol,
+  title   = {Luminol-{AIDetect}: Fast Zero-shot Machine-Generated Text Detection based on Perplexity under Text Shuffling},
+  author  = {La Cava, Lucio and Tagarelli, Andrea},
+  journal = {arXiv preprint arXiv:2604.25860},
+  year    = {2026}
+}
+
+@article{guo2026uncertainty,
+  title   = {On the Salience of Low-Probability Tokens for {AI}-Generated Text Detection: A Multiscale Uncertainty Perspective},
+  author  = {Guo, Yikai and Wang, Bin and Fan, Xilai and Ke, Wenjun and Luo, Haoran},
+  journal = {arXiv preprint arXiv:2606.02158},
+  year    = {2026},
+  note    = {Code: https://github.com/guoyikai2000/Uncertainty-AIGT}
+}
+
+@inproceedings{gehrmann2019gltr,
+  title     = {{GLTR}: Statistical Detection and Visualization of Generated Text},
+  author    = {Gehrmann, Sebastian and Strobelt, Hendrik and Rush, Alexander M.},
+  booktitle = {Proceedings of ACL: System Demonstrations},
+  year      = {2019},
+  note      = {arXiv:1906.04043}
+}
+
+@article{bao2024glimpse,
+  title   = {Glimpse: Enabling White-Box Methods to Use Proprietary Models for Zero-Shot {LLM}-Generated Text Detection},
+  author  = {Bao, Guangsheng and Zhao, Yanbin and He, Juncai and Zhang, Yue},
+  journal = {arXiv preprint arXiv:2412.11506},
+  year    = {2024},
+  note    = {Code: https://github.com/baoguangsheng/glimpse}
+}
+
+@article{basani2025diveye,
+  title   = {Diversity Boosts {AI}-Generated Text Detection},
+  author  = {Basani, Advik Raj and Chen, Pin-Yu},
+  journal = {arXiv preprint arXiv:2509.18880},
+  year    = {2025}
+}
+
+@article{ranganath2026stealthrl,
+  title   = {{StealthRL}: Reinforcement Learning Paraphrase Attacks for Multi-Detector Evasion of {AI}-Text Detectors},
+  author  = {Ranganath, Suraj and Ramesh, Atharv},
+  journal = {arXiv preprint arXiv:2602.08934},
+  year    = {2026}
+}
+
+@article{west2025tdetect,
+  title   = {T-Detect: Tail-Aware Statistical Normalization for Robust Detection of Adversarial Machine-Generated Text},
+  author  = {West, Alva and Zhang, Luodan and Zhang, Liuliu and Zhu, Minjun and Weng, Yixuan and Zhang, Yue},
+  journal = {arXiv preprint arXiv:2507.23577},
+  year    = {2025}
+}
+
+@article{zhu2025mcp,
+  title   = {Reliably Bounding False Positives: A Zero-Shot Machine-Generated Text Detection Framework via Multiscaled Conformal Prediction},
+  author  = {Zhu, Xiaowei and Ren, Yubing and Cao, Yanan and Lin, Xixun and Fang, Fang and Li, Yangxi},
+  journal = {arXiv preprint arXiv:2505.05084},
+  year    = {2025}
+}
+
+% ---------- Supervised detectors & robustness recipes ----------
+
+@article{li2026meld,
+  title   = {{MELD}: Multi-Task Equilibrated Learning Detector for AI-Generated Text},
+  author  = {Li, Chenjun and Wan, Cheng and Paetzold, Johannes C.},
+  journal = {arXiv preprint arXiv:2605.06903},
+  year    = {2026}
+}
+
+@article{shen2026rethinking,
+  title   = {Rethinking AI-Generated Text Detection: A Strong Baseline and the Distribution-Shift Problem That Remains},
+  author  = {Shen, Zhuoer and Wang, Mingyi and Zou, Shaofeng and Bu, Yuheng},
+  journal = {arXiv preprint arXiv:2607.03680},
+  year    = {2026}
+}
+
+@inproceedings{thorat2026dactyl,
+  title     = {Team {DACTYL} at {PAN} 2026: Bayesian Data Mixing and Empirical X-risk Minimization for AI-text Detection},
+  author    = {Thorat, Shantanu},
+  booktitle = {Working Notes of CLEF 2026},
+  year      = {2026},
+  note      = {arXiv:2607.17382. Models: https://huggingface.co/collections/ShantanuT01/panclef-2026}
+}
+
+@article{elattar2026linguistic,
+  title   = {A Systematic Analysis of Linguistic Features in AI-Generated Text Detection Across Domains and Models},
+  author  = {El Attar, Yassir and D{\"o}nmez, Esra and Maurer, Maximilian and Falenska, Agnieszka},
+  journal = {arXiv preprint arXiv:2606.04177},
+  year    = {2026},
+  note    = {Feature extraction: https://github.com/mmmaurer/elfen}
+}
+
+@inproceedings{verma2024ghostbuster,
+  title     = {Ghostbuster: Detecting Text Ghostwritten by Large Language Models},
+  author    = {Verma, Vivek and Fleisig, Eve and Tomlin, Nicholas and Klein, Dan},
+  booktitle = {Proceedings of NAACL 2024},
+  year      = {2024},
+  note      = {arXiv:2305.15047. Code: https://github.com/vivek3141/ghostbuster}
+}
+
+@inproceedings{hu2023radar,
+  title     = {{RADAR}: Robust AI-Text Detection via Adversarial Learning},
+  author    = {Hu, Xiaomeng and Chen, Pin-Yu and Ho, Tsung-Yi},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2023},
+  note      = {arXiv:2307.03838. Model: https://huggingface.co/TrustSafeAI/RADAR-Vicuna-7B}
+}
+
+@inproceedings{drayson2025collapse,
+  title     = {Machine-generated text detection prevents language model collapse},
+  author    = {Drayson, George and Yilmaz, Emine and Lampos, Vasileios},
+  booktitle = {Proceedings of EMNLP 2025},
+  year      = {2025},
+  note      = {arXiv:2502.15654. Model: https://huggingface.co/GeorgeDrayson/modernbert-ai-detection-raid-mage}
+}
+
+@inproceedings{macko2025mdok,
+  title     = {mdok of {KInIT}: Robustly Fine-tuned {LLM} for Binary and Multiclass AI-Generated Text Detection},
+  author    = {Macko, Dominik},
+  booktitle = {Working Notes of CLEF 2025},
+  year      = {2025},
+  note      = {arXiv:2506.01702. Code: https://github.com/kinit-sk/mdok (weights CC-BY-NC-ND)}
+}
+
+@article{tripathi2025dogen,
+  title   = {Domain Gating Ensemble Networks for AI-Generated Text Detection},
+  author  = {Tripathi, Arihant and Dugan, Liam and Gao, Charis and others},
+  journal = {arXiv preprint arXiv:2505.13855},
+  year    = {2025}
+}
+
+@article{duan2026react,
+  title   = {Fight Poison with Poison: Enhancing Robustness in Few-shot Machine-Generated Text Detection with Adversarial Training},
+  author  = {Duan, Wenjing and Zhou, Qi and Li, Yuanfan},
+  journal = {arXiv preprint arXiv:2605.02374},
+  year    = {2026}
+}
+
+@article{vishnyakov2026svdetect,
+  title   = {{SV-Detect}: AI-generated Text Detection with Steering Vectors},
+  author  = {Vishnyakov, Mikhail and Gaintseva, Tatiana},
+  journal = {arXiv preprint arXiv:2606.07313},
+  year    = {2026}
+}
+
+@article{liu2026wavedetect,
+  title   = {{WaveDetect}: Robust Framework for Machine-Generated Text Detection via Wavelet Transform},
+  author  = {Liu, Zhichen and Qin, Kaitong and He, Linhan and Xu, Yang},
+  journal = {arXiv preprint arXiv:2606.23336},
+  year    = {2026}
+}
+
+@article{bonifazi2026gtcl,
+  title   = {Latent Trajectory Discrimination for AI-Generated Text Detection},
+  author  = {Bonifazi, Gianluca and Buratti, Christopher and Marchetti, Michele and Parlapiano, Federica and Quaglieri, Giulia and Traini, Davide and Ursino, Domenico and Virgili, Luca},
+  journal = {arXiv preprint arXiv:2607.14967},
+  year    = {2026}
+}
+
+@techreport{solaiman2019release,
+  title       = {Release Strategies and the Social Impacts of Language Models},
+  author      = {Solaiman, Irene and Brundage, Miles and Clark, Jack and others},
+  institution = {OpenAI},
+  year        = {2019},
+  note        = {arXiv:1908.09203}
+}
+
+% ---------- Evaluation methodology, attacks, ethics ----------
+
+@article{liang2023gpt,
+  title   = {GPT detectors are biased against non-native English writers},
+  author  = {Liang, Weixin and Yuksekgonul, Mert and Mao, Yining and Wu, Eric and Zou, James},
+  journal = {Patterns},
+  volume  = {4},
+  number  = {7},
+  pages   = {100779},
+  year    = {2023},
+  doi     = {10.1016/j.patter.2023.100779},
+  note    = {arXiv:2304.02819}
+}
+
+@article{sadasivan2023can,
+  title   = {Can AI-Generated Text be Reliably Detected?},
+  author  = {Sadasivan, Vinu Sankar and Kumar, Aounon and Balasubramanian, Sriram and Wang, Wenxiao and Feizi, Soheil},
+  journal = {Transactions on Machine Learning Research},
+  year    = {2025},
+  note    = {arXiv:2303.11156}
+}
+
+@inproceedings{krishna2023paraphrasing,
+  title     = {Paraphrasing evades detectors of AI-generated text, but retrieval is an effective defense},
+  author    = {Krishna, Kalpesh and Song, Yixiao and Karpinska, Marzena and Wieting, John and Iyyer, Mohit},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2023},
+  note      = {arXiv:2303.13408. Code: https://github.com/martiansideofthemoon/ai-detection-paraphrases}
+}
+
+@inproceedings{kirchenbauer2023watermark,
+  title     = {A Watermark for Large Language Models},
+  author    = {Kirchenbauer, John and Geiping, Jonas and Wen, Yuxin and Katz, Jonathan and Miers, Ian and Goldstein, Tom},
+  booktitle = {Proceedings of the 40th International Conference on Machine Learning (ICML)},
+  year      = {2023},
+  note      = {arXiv:2301.10226. Outstanding Paper Award}
+}
+
+@inproceedings{dugan2025genai,
+  title     = {GenAI Content Detection Task 3: Cross-Domain Machine-Generated Text Detection Challenge},
+  author    = {Dugan, Liam and Zhu, Andrew and Alam, Firoj and Nakov, Preslav and Apidianaki, Marianna and Callison-Burch, Chris},
+  booktitle = {Proceedings of the 1st Workshop on GenAI Content Detection (GenAIDetect), COLING 2025},
+  year      = {2025},
+  note      = {arXiv:2501.08913}
+}
+
+@inproceedings{russell2025people,
+  title     = {People who frequently use {ChatGPT} for writing tasks are accurate and robust detectors of AI-generated text},
+  author    = {Russell, Jenna and Karpinska, Marzena and Iyyer, Mohit},
+  booktitle = {Proceedings of ACL 2025},
+  year      = {2025},
+  note      = {arXiv:2501.15654}
+}
+
+@article{luo2026senflow,
+  title   = {SenFlow: Inter-Sentence Flow Modeling for AI-Generated Text Detection in Hybrid Documents},
+  author  = {Luo, Jingkun and Sun, Yifan and Peng, Da-Tian and Pei, Guanxiong},
+  journal = {arXiv preprint arXiv:2606.18946},
+  year    = {2026}
+}
+
+@article{doughman2024exploring,
+  title   = {Exploring the Limitations of Detecting Machine-Generated Text},
+  author  = {Doughman, Jad and Afzal, Osama Mohammed and Toyin, Hawau Olamide and Shehata, Shady and Nakov, Preslav and Talat, Zeerak},
+  journal = {arXiv preprint arXiv:2406.11073},
+  year    = {2024}
+}
+
+@article{geirhos2020shortcut,
+  title   = {Shortcut learning in deep neural networks},
+  author  = {Geirhos, Robert and Jacobsen, J{\"o}rn-Henrik and Michaelis, Claudio and Zemel, Richard and Brendel, Wieland and Bethge, Matthias and Wichmann, Felix A.},
+  journal = {Nature Machine Intelligence},
+  volume  = {2},
+  pages   = {665--673},
+  year    = {2020},
+  doi     = {10.1038/s42256-020-00257-z}
+}
+
+@article{perkins2023detection,
+  title   = {Detection of GPT-4 Generated Text in Higher Education: Combining Academic Judgement and Software to Identify Generative AI Tool Misuse},
+  author  = {Perkins, Mike and Roe, Jasper and Postma, Darius and McGaughran, James and Hickerson, Don},
+  journal = {Journal of Academic Ethics},
+  volume  = {22},
+  pages   = {89--113},
+  year    = {2024},
+  doi     = {10.1007/s10805-023-09492-6}
+}
+
+@article{dalalah2023false,
+  title   = {The false positives and false negatives of generative AI detection tools in education and academic research: The case of ChatGPT},
+  author  = {Dalalah, Doraid and Dalalah, Osama M.A.},
+  journal = {The International Journal of Management Education},
+  volume  = {21},
+  number  = {2},
+  pages   = {100822},
+  year    = {2023},
+  doi     = {10.1016/j.ijme.2023.100822}
+}
+
+@misc{openai2023classifier,
+  title        = {New AI classifier for indicating AI-written text},
+  author       = {{OpenAI}},
+  year         = {2023},
+  howpublished = {\url{https://openai.com/index/new-ai-classifier-for-indicating-ai-written-text/}},
+  note         = {Classifier retired July 20, 2023, ``due to its low rate of accuracy''}
+}
+
+@misc{vanderbilt2023turnitin,
+  title        = {Guidance on AI Detection and Why We're Disabling Turnitin's AI Detector},
+  author       = {{Vanderbilt University}},
+  year         = {2023},
+  howpublished = {\url{https://www.vanderbilt.edu/brightspace/2023/08/16/guidance-on-ai-detection-and-why-were-disabling-turnitins-ai-detector/}}
+}
+
+@misc{vu2024genai,
+  title        = {Generative AI: your use, our expectations},
+  author       = {{Vrije Universiteit Amsterdam}},
+  howpublished = {\url{https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations}},
+  note         = {Fraud determined by examination board investigation, not detector scores}
+}
