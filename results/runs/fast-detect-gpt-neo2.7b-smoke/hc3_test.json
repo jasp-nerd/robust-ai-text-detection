@@ -1,0 +1,104 @@
+{
+  "run": "fast-detect-gpt-neo2.7b-smoke",
+  "config": {
+    "name": "fast-detect-gpt-neo2.7b",
+    "seed": 0,
+    "model": {
+      "type": "fast_detect_gpt",
+      "scorer": "EleutherAI/gpt-neo-2.7B",
+      "max_tokens": 512
+    },
+    "train": null,
+    "eval": [
+      {
+        "dataset": "raid",
+        "split": "eval"
+      },
+      {
+        "dataset": "mage",
+        "split": "test",
+        "sample": 12000
+      },
+      {
+        "dataset": "hc3",
+        "split": "test",
+        "sample": 8000
+      }
+    ]
+  },
+  "git_commit": "8c5bba9",
+  "train_rows": 0,
+  "train_seconds": 0.0,
+  "eval": "hc3/test",
+  "n_eval": 120,
+  "metrics": {
+    "overall": {
+      "auroc": 1.0,
+      "tpr_at_fpr_0.05": 1.0,
+      "tpr_at_fpr_0.01": 1.0,
+      "n_machine": 27.0,
+      "n_human": 93.0
+    },
+    "slices": {
+      "generator": {
+        "chatgpt": {
+          "auroc": 1.0,
+          "tpr_at_fpr_0.05": 1.0,
+          "tpr_at_fpr_0.01": 1.0,
+          "n_machine": 27.0,
+          "n_human": 93.0
+        }
+      },
+      "domain": {
+        "finance": {
+          "auroc": 1.0,
+          "tpr_at_fpr_0.05": 1.0,
+          "tpr_at_fpr_0.01": 1.0,
+          "n_machine": 2.0,
+          "n_human": 3.0
+        },
+        "medicine": {
+          "auroc": 1.0,
+          "tpr_at_fpr_0.05": 1.0,
+          "tpr_at_fpr_0.01": 1.0,
+          "n_machine": 1.0,
+          "n_human": 93.0
+        },
+        "open_qa": {
+          "auroc": 1.0,
+          "tpr_at_fpr_0.05": 1.0,
+          "tpr_at_fpr_0.01": 1.0,
+          "n_machine": 2.0,
+          "n_human": 3.0
+        },
+        "reddit_eli5": {
+          "auroc": 1.0,
+          "tpr_at_fpr_0.05": 1.0,
+          "tpr_at_fpr_0.01": 1.0,
+          "n_machine": 21.0,
+          "n_human": 86.0
+        },
+        "wiki_csai": {
+          "auroc": 1.0,
+          "tpr_at_fpr_0.05": 1.0,
+          "tpr_at_fpr_0.01": 1.0,
+          "n_machine": 1.0,
+          "n_human": 1.0
+        }
+      },
+      "attack": {
+        "none": {
+          "auroc": 1.0,
+          "tpr_at_fpr_0.05": 1.0,
+          "tpr_at_fpr_0.01": 1.0,
+          "n_machine": 27.0,
+          "n_human": 93.0
+        }
+      }
+    }
+  },
+  "seen_vs_unseen": {
+    "unseen": null
+  },
+  "calibration_transfer": []
+}

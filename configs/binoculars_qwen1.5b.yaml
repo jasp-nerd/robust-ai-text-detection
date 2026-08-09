@@ -1,0 +1,19 @@
+# Binoculars with a small matched base/instruct pair (Mac-runnable dev config).
+# The paper-faithful Falcon-7B pair runs on the GPU server (8-bit) — separate config.
+name: binoculars-qwen2.5-1.5b
+seed: 0
+model:
+  type: binoculars
+  observer: Qwen/Qwen2.5-1.5B
+  performer: Qwen/Qwen2.5-1.5B-Instruct
+  max_tokens: 512
+train: null
+eval:
+  - dataset: raid
+    split: eval
+  - dataset: mage
+    split: test
+    sample: 12000
+  - dataset: hc3
+    split: test
+    sample: 8000

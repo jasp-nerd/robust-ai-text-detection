@@ -1,0 +1,272 @@
+{
+  "run": "fast-detect-gpt-neo2.7b-smoke",
+  "config": {
+    "name": "fast-detect-gpt-neo2.7b",
+    "seed": 0,
+    "model": {
+      "type": "fast_detect_gpt",
+      "scorer": "EleutherAI/gpt-neo-2.7B",
+      "max_tokens": 512
+    },
+    "train": null,
+    "eval": [
+      {
+        "dataset": "raid",
+        "split": "eval"
+      },
+      {
+        "dataset": "mage",
+        "split": "test",
+        "sample": 12000
+      },
+      {
+        "dataset": "hc3",
+        "split": "test",
+        "sample": 8000
+      }
+    ]
+  },
+  "git_commit": "8c5bba9",
+  "train_rows": 0,
+  "train_seconds": 0.0,
+  "eval": "raid/eval",
+  "n_eval": 120,
+  "metrics": {
+    "overall": {
+      "auroc": 0.7881263616557734,
+      "tpr_at_fpr_0.05": 0.6078431372549019,
+      "tpr_at_fpr_0.01": 0.6078431372549019,
+      "n_machine": 102.0,
+      "n_human": 18.0
+    },
+    "slices": {
+      "generator": {
+        "chatgpt": {
+          "auroc": 0.7222222222222222,
+          "tpr_at_fpr_0.05": 0.4,
+          "tpr_at_fpr_0.01": 0.4,
+          "n_machine": 5.0,
+          "n_human": 18.0
+        },
+        "cohere": {
+          "auroc": 0.8722222222222222,
+          "tpr_at_fpr_0.05": 0.7,
+          "tpr_at_fpr_0.01": 0.7,
+          "n_machine": 10.0,
+          "n_human": 18.0
+        },
+        "cohere-chat": {
+          "auroc": 0.9753086419753086,
+          "tpr_at_fpr_0.05": 0.7777777777777778,
+          "tpr_at_fpr_0.01": 0.7777777777777778,
+          "n_machine": 9.0,
+          "n_human": 18.0
+        },
+        "gpt2": {
+          "auroc": 0.857638888888889,
+          "tpr_at_fpr_0.05": 0.75,
+          "tpr_at_fpr_0.01": 0.75,
+          "n_machine": 16.0,
+          "n_human": 18.0
+        },
+        "gpt3": {
+          "auroc": 1.0,
+          "tpr_at_fpr_0.05": 1.0,
+          "tpr_at_fpr_0.01": 1.0,
+          "n_machine": 5.0,
+          "n_human": 18.0
+        },
+        "gpt4": {
+          "auroc": 0.7063492063492063,
+          "tpr_at_fpr_0.05": 0.2857142857142857,
+          "tpr_at_fpr_0.01": 0.2857142857142857,
+          "n_machine": 7.0,
+          "n_human": 18.0
+        },
+        "llama-chat": {
+          "auroc": 0.8034188034188033,
+          "tpr_at_fpr_0.05": 0.6923076923076923,
+          "tpr_at_fpr_0.01": 0.6923076923076923,
+          "n_machine": 13.0,
+          "n_human": 18.0
+        },
+        "mistral": {
+          "auroc": 0.611111111111111,
+          "tpr_at_fpr_0.05": 0.4166666666666667,
+          "tpr_at_fpr_0.01": 0.4166666666666667,
+          "n_machine": 12.0,
+          "n_human": 18.0
+        },
+        "mistral-chat": {
+          "auroc": 0.9722222222222223,
+          "tpr_at_fpr_0.05": 0.8333333333333334,
+          "tpr_at_fpr_0.01": 0.8333333333333334,
+          "n_machine": 6.0,
+          "n_human": 18.0
+        },
+        "mpt": {
+          "auroc": 0.44444444444444436,
+          "tpr_at_fpr_0.05": 0.14285714285714285,
+          "tpr_at_fpr_0.01": 0.14285714285714285,
+          "n_machine": 7.0,
+          "n_human": 18.0
+        },
+        "mpt-chat": {
+          "auroc": 0.7407407407407408,
+          "tpr_at_fpr_0.05": 0.5833333333333334,
+          "tpr_at_fpr_0.01": 0.5833333333333334,
+          "n_machine": 12.0,
+          "n_human": 18.0
+        }
+      },
+      "domain": {
+        "abstracts": {
+          "auroc": 0.7307692307692308,
+          "tpr_at_fpr_0.05": 0.5384615384615384,
+          "tpr_at_fpr_0.01": 0.5384615384615384,
+          "n_machine": 13.0,
+          "n_human": 2.0
+        },
+        "books": {
+          "auroc": 0.7352941176470589,
+          "tpr_at_fpr_0.05": 0.7058823529411765,
+          "tpr_at_fpr_0.01": 0.7058823529411765,
+          "n_machine": 17.0,
+          "n_human": 2.0
+        },
+        "news": {
+          "auroc": 0.7875816993464053,
+          "tpr_at_fpr_0.05": 0.47058823529411764,
+          "tpr_at_fpr_0.01": 0.47058823529411764,
+          "n_machine": 17.0,
+          "n_human": 18.0
+        },
+        "poetry": {
+          "auroc": 0.8615384615384616,
+          "tpr_at_fpr_0.05": 0.6923076923076923,
+          "tpr_at_fpr_0.01": 0.6923076923076923,
+          "n_machine": 13.0,
+          "n_human": 5.0
+        },
+        "recipes": {
+          "auroc": 0.5333333333333333,
+          "tpr_at_fpr_0.05": 0.3,
+          "tpr_at_fpr_0.01": 0.3,
+          "n_machine": 10.0,
+          "n_human": 3.0
+        },
+        "reddit": {
+          "auroc": 0.75,
+          "tpr_at_fpr_0.05": 0.75,
+          "tpr_at_fpr_0.01": 0.75,
+          "n_machine": 8.0,
+          "n_human": 2.0
+        },
+        "reviews": {
+          "auroc": 0.9230769230769231,
+          "tpr_at_fpr_0.05": 0.9230769230769231,
+          "tpr_at_fpr_0.01": 0.9230769230769231,
+          "n_machine": 13.0,
+          "n_human": 1.0
+        },
+        "wiki": {
+          "auroc": 0.9393939393939393,
+          "tpr_at_fpr_0.05": 0.9090909090909091,
+          "tpr_at_fpr_0.01": 0.9090909090909091,
+          "n_machine": 11.0,
+          "n_human": 3.0
+        }
+      },
+      "attack": {
+        "alternative_spelling": {
+          "auroc": 1.0,
+          "tpr_at_fpr_0.05": 1.0,
+          "tpr_at_fpr_0.01": 1.0,
+          "n_machine": 6.0,
+          "n_human": 18.0
+        },
+        "article_deletion": {
+          "auroc": 1.0,
+          "tpr_at_fpr_0.05": 1.0,
+          "tpr_at_fpr_0.01": 1.0,
+          "n_machine": 7.0,
+          "n_human": 18.0
+        },
+        "homoglyph": {
+          "auroc": 0.65,
+          "tpr_at_fpr_0.05": 0.2,
+          "tpr_at_fpr_0.01": 0.2,
+          "n_machine": 10.0,
+          "n_human": 18.0
+        },
+        "insert_paragraphs": {
+          "auroc": 0.7530864197530864,
+          "tpr_at_fpr_0.05": 0.5555555555555556,
+          "tpr_at_fpr_0.01": 0.5555555555555556,
+          "n_machine": 9.0,
+          "n_human": 18.0
+        },
+        "none": {
+          "auroc": 0.7777777777777778,
+          "tpr_at_fpr_0.05": 0.7142857142857143,
+          "tpr_at_fpr_0.01": 0.7142857142857143,
+          "n_machine": 7.0,
+          "n_human": 18.0
+        },
+        "number": {
+          "auroc": 0.8055555555555557,
+          "tpr_at_fpr_0.05": 0.625,
+          "tpr_at_fpr_0.01": 0.625,
+          "n_machine": 8.0,
+          "n_human": 18.0
+        },
+        "paraphrase": {
+          "auroc": 0.9777777777777777,
+          "tpr_at_fpr_0.05": 0.6,
+          "tpr_at_fpr_0.01": 0.6,
+          "n_machine": 5.0,
+          "n_human": 18.0
+        },
+        "perplexity_misspelling": {
+          "auroc": 0.9097222222222222,
+          "tpr_at_fpr_0.05": 0.875,
+          "tpr_at_fpr_0.01": 0.875,
+          "n_machine": 8.0,
+          "n_human": 18.0
+        },
+        "synonym": {
+          "auroc": 0.7254901960784313,
+          "tpr_at_fpr_0.05": 0.47058823529411764,
+          "tpr_at_fpr_0.01": 0.47058823529411764,
+          "n_machine": 17.0,
+          "n_human": 18.0
+        },
+        "upper_lower": {
+          "auroc": 0.6616161616161615,
+          "tpr_at_fpr_0.05": 0.5454545454545454,
+          "tpr_at_fpr_0.01": 0.5454545454545454,
+          "n_machine": 11.0,
+          "n_human": 18.0
+        },
+        "whitespace": {
+          "auroc": 0.6759259259259258,
+          "tpr_at_fpr_0.05": 0.6666666666666666,
+          "tpr_at_fpr_0.01": 0.6666666666666666,
+          "n_machine": 6.0,
+          "n_human": 18.0
+        },
+        "zero_width_space": {
+          "auroc": 0.7986111111111112,
+          "tpr_at_fpr_0.05": 0.5,
+          "tpr_at_fpr_0.01": 0.5,
+          "n_machine": 8.0,
+          "n_human": 18.0
+        }
+      }
+    }
+  },
+  "seen_vs_unseen": {
+    "unseen": null
+  },
+  "calibration_transfer": []
+}

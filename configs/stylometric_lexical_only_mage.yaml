@@ -14,3 +14,5 @@ eval:
     split: test
   - dataset: hc3
     split: test
+  - dataset: raid
+    split: eval

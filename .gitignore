@@ -6,9 +6,10 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 
-# Data & models — never commit raw datasets or weights
-data/
-models/
+# Data & models — never commit raw datasets or weights (root dirs only:
+# an unanchored pattern would also swallow src/detector/data and src/detector/models)
+/data/
+/models/
 *.ckpt
 *.safetensors
 *.pt

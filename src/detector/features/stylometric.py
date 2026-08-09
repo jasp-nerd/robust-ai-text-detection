@@ -60,7 +60,7 @@ def extract_features(text: str) -> np.ndarray:
         "mean_sentence_words": float(np.mean(sent_lens)),
         "std_sentence_words": float(np.std(sent_lens)),
         "comma_rate": text.count(",") / n_words,
-        "punct_rate": sum(1 for ch in text if ch in ".,;:!?—–-()\"'") / n_chars,
+        "punct_rate": sum(1 for ch in text if ch in ".,;:!?\u2014\u2013-()\"'") / n_chars,
         "uppercase_rate": sum(1 for ch in text if ch.isupper()) / n_chars,
         "char_entropy": char_entropy,
         "stopword_rate": n_stop / n_words,

@@ -21,6 +21,27 @@ from detector.data.audits import ARTIFACT_PATTERNS
 from detector.evaluation.harness import calibration_transfer, evaluate_slices
 from detector.models.baselines import StylometricGBM, TfidfLogReg
 
+
+def _fast_detect_gpt(cfg: dict, seed: int):
+    from detector.models.fast_detect_gpt import FastDetectGPT  # lazy: pulls in torch
+
+    return FastDetectGPT(
+        scorer=cfg.get("scorer", "EleutherAI/gpt-neo-2.7B"),
+        sampler=cfg.get("sampler"),
+        max_tokens=cfg.get("max_tokens", 512),
+    )
+
+
+def _binoculars(cfg: dict, seed: int):
+    from detector.models.binoculars import Binoculars  # lazy: pulls in torch
+
+    return Binoculars(
+        observer=cfg.get("observer", "Qwen/Qwen2.5-1.5B"),
+        performer=cfg.get("performer", "Qwen/Qwen2.5-1.5B-Instruct"),
+        max_tokens=cfg.get("max_tokens", 512),
+    )
+
+
 MODEL_TYPES = {
     "tfidf_logreg": lambda cfg, seed: TfidfLogReg(
         max_features=cfg.get("max_features", 100_000), seed=seed
@@ -28,6 +49,8 @@ MODEL_TYPES = {
     "stylometric_gbm": lambda cfg, seed: StylometricGBM(
         feature_subset=cfg.get("feature_subset"), seed=seed
     ),
+    "fast_detect_gpt": _fast_detect_gpt,
+    "binoculars": _binoculars,
 }
 
 
@@ -55,28 +78,33 @@ def main() -> None:
     run_dir = args.out / name
     run_dir.mkdir(parents=True, exist_ok=True)
 
-    train_cfg = cfg["train"]
-    train = load_split(args.data, train_cfg["dataset"], train_cfg["split"])
-    if train_cfg.get("filter_artifacts", True):
-        before = len(train)
-        train = drop_artifact_rows(train)
-        print(f"artifact filter: dropped {before - len(train):,} machine rows")
-    if args.limit:
-        train = train.sample(min(args.limit, len(train)), seed=seed)
-
     model = MODEL_TYPES[cfg["model"]["type"]](cfg["model"], seed)
-    t0 = time.time()
-    model.fit(train["text"].to_list(), train["label"].to_numpy())
-    train_seconds = time.time() - t0
-    print(f"trained {cfg['model']['type']} on {len(train):,} rows in {train_seconds:.0f}s")
+    train_cfg = cfg.get("train")
+    train_generators: set[str] = set()
+    train_rows, train_seconds = 0, 0.0
+    if train_cfg is not None:
+        train = load_split(args.data, train_cfg["dataset"], train_cfg["split"])
+        if train_cfg.get("filter_artifacts", True):
+            before = len(train)
+            train = drop_artifact_rows(train)
+            print(f"artifact filter: dropped {before - len(train):,} machine rows")
+        if args.limit:
+            train = train.sample(min(args.limit, len(train)), seed=seed)
+        t0 = time.time()
+        model.fit(train["text"].to_list(), train["label"].to_numpy())
+        train_seconds = time.time() - t0
+        train_generators = set(train["generator"].unique().to_list())
+        train_rows = len(train)
+        print(f"trained {cfg['model']['type']} on {train_rows:,} rows in {train_seconds:.0f}s")
 
     commit = subprocess.run(
         ["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True
     ).stdout.strip()
 
-    train_generators = set(train["generator"].unique().to_list())
     for ev in cfg["eval"]:
         df = load_split(args.data, ev["dataset"], ev["split"])
+        if ev.get("sample"):
+            df = df.sample(min(ev["sample"], len(df)), seed=seed)
         if args.limit:
             df = df.sample(min(args.limit * 2, len(df)), seed=seed)
         scores = model.predict_scores(df["text"].to_list())
@@ -91,7 +119,7 @@ def main() -> None:
             "run": name,
             "config": cfg,
             "git_commit": commit,
-            "train_rows": len(train),
+            "train_rows": train_rows,
             "train_seconds": round(train_seconds, 1),
             "eval": f"{ev['dataset']}/{ev['split']}",
             "n_eval": len(scored),

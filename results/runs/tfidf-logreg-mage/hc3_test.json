@@ -20,12 +20,16 @@
       {
         "dataset": "hc3",
         "split": "test"
+      },
+      {
+        "dataset": "raid",
+        "split": "eval"
       }
     ]
   },
-  "git_commit": "8e684cd",
+  "git_commit": "8c5bba9",
   "train_rows": 318177,
-  "train_seconds": 61.8,
+  "train_seconds": 53.9,
   "eval": "hc3/test",
   "n_eval": 85431,
   "metrics": {

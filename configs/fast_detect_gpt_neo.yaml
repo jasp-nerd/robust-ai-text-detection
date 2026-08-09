@@ -1,0 +1,19 @@
+# Fast-DetectGPT, zero-shot, sampler == scorer == GPT-Neo-2.7B.
+# This is the Mac-runnable dev config; the paper-faithful black-box config
+# (sampler gpt-j-6B) and the repo-recommended Llama-3 pair need the GPU server.
+name: fast-detect-gpt-neo2.7b
+seed: 0
+model:
+  type: fast_detect_gpt
+  scorer: EleutherAI/gpt-neo-2.7B
+  max_tokens: 512
+train: null
+eval:
+  - dataset: raid
+    split: eval        # 33.4K rows, full attack/generator/domain grid
+  - dataset: mage
+    split: test
+    sample: 12000
+  - dataset: hc3
+    split: test
+    sample: 8000
