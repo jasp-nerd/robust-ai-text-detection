@@ -53,6 +53,7 @@ def _binoculars(cfg: dict, seed: int):
         observer=cfg.get("observer", "Qwen/Qwen2.5-1.5B"),
         performer=cfg.get("performer", "Qwen/Qwen2.5-1.5B-Instruct"),
         max_tokens=cfg.get("max_tokens", 512),
+        load_in_8bit=cfg.get("load_in_8bit", False),
     )
 
 

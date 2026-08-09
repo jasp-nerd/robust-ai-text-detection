@@ -30,6 +30,7 @@ class Binoculars:
         performer: str = "Qwen/Qwen2.5-1.5B-Instruct",
         max_tokens: int = 512,
         device: str | None = None,
+        load_in_8bit: bool = False,
     ):
         self.device = device or best_device()
         dtype = torch.float16 if self.device != "cpu" else torch.float32
@@ -40,10 +41,22 @@ class Binoculars:
             raise ValueError(
                 "observer and performer must share a tokenizer (Binoculars requirement)"
             )
-        self.observer = AutoModelForCausalLM.from_pretrained(observer, torch_dtype=dtype)
-        self.performer = AutoModelForCausalLM.from_pretrained(performer, torch_dtype=dtype)
-        self.observer.to(self.device).eval()
-        self.performer.to(self.device).eval()
+        # 8-bit lets the Falcon-7B pair (~29GB bf16) fit a 24GB card (CUDA only).
+        kwargs: dict = {"torch_dtype": dtype}
+        if load_in_8bit:
+            from transformers import BitsAndBytesConfig
+
+            kwargs = {
+                "quantization_config": BitsAndBytesConfig(load_in_8bit=True),
+                "device_map": {"": 0},
+            }
+        self.observer = AutoModelForCausalLM.from_pretrained(observer, **kwargs)
+        self.performer = AutoModelForCausalLM.from_pretrained(performer, **kwargs)
+        if not load_in_8bit:
+            self.observer.to(self.device)
+            self.performer.to(self.device)
+        self.observer.eval()
+        self.performer.eval()
 
     def fit(self, texts: list[str], labels: np.ndarray) -> Binoculars:
         return self  # zero-shot

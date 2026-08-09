@@ -1,0 +1,722 @@
+{
+  "run": "binoculars-qwen2.5-0.5b",
+  "config": {
+    "name": "binoculars-qwen2.5-0.5b",
+    "seed": 0,
+    "model": {
+      "type": "binoculars",
+      "observer": "Qwen/Qwen2.5-0.5B",
+      "performer": "Qwen/Qwen2.5-0.5B-Instruct",
+      "max_tokens": 512
+    },
+    "train": null,
+    "eval": [
+      {
+        "dataset": "raid",
+        "split": "eval"
+      },
+      {
+        "dataset": "mage",
+        "split": "test",
+        "sample": 12000
+      },
+      {
+        "dataset": "hc3",
+        "split": "test",
+        "sample": 8000
+      }
+    ]
+  },
+  "git_commit": "b5df916",
+  "train_rows": 0,
+  "train_seconds": 0.0,
+  "eval": "raid/eval",
+  "n_eval": 33396,
+  "metrics": {
+    "overall": {
+      "auroc": 0.7387984151116656,
+      "tpr_at_fpr_0.05": 0.35571969696969696,
+      "tpr_at_fpr_0.01": 0.19625,
+      "n_machine": 26400.0,
+      "n_human": 6996.0
+    },
+    "slices": {
+      "generator": {
+        "chatgpt": {
+          "auroc": 0.7863211120640367,
+          "tpr_at_fpr_0.05": 0.3154166666666667,
+          "tpr_at_fpr_0.01": 0.14458333333333334,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "cohere": {
+          "auroc": 0.814192723222794,
+          "tpr_at_fpr_0.05": 0.27375,
+          "tpr_at_fpr_0.01": 0.0925,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "cohere-chat": {
+          "auroc": 0.8260944349151896,
+          "tpr_at_fpr_0.05": 0.3883333333333333,
+          "tpr_at_fpr_0.01": 0.18166666666666667,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "gpt2": {
+          "auroc": 0.7770145738040783,
+          "tpr_at_fpr_0.05": 0.48083333333333333,
+          "tpr_at_fpr_0.01": 0.3591666666666667,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "gpt3": {
+          "auroc": 0.9011452377549074,
+          "tpr_at_fpr_0.05": 0.6216666666666667,
+          "tpr_at_fpr_0.01": 0.41,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "gpt4": {
+          "auroc": 0.7109403885553649,
+          "tpr_at_fpr_0.05": 0.22916666666666666,
+          "tpr_at_fpr_0.01": 0.09125,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "llama-chat": {
+          "auroc": 0.767809194539737,
+          "tpr_at_fpr_0.05": 0.34458333333333335,
+          "tpr_at_fpr_0.01": 0.14083333333333334,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "mistral": {
+          "auroc": 0.6429166666666667,
+          "tpr_at_fpr_0.05": 0.32208333333333333,
+          "tpr_at_fpr_0.01": 0.21041666666666667,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "mistral-chat": {
+          "auroc": 0.7648494973318087,
+          "tpr_at_fpr_0.05": 0.38208333333333333,
+          "tpr_at_fpr_0.01": 0.20541666666666666,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "mpt": {
+          "auroc": 0.5102006205927196,
+          "tpr_at_fpr_0.05": 0.2504166666666667,
+          "tpr_at_fpr_0.01": 0.1825,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "mpt-chat": {
+          "auroc": 0.6252981167810178,
+          "tpr_at_fpr_0.05": 0.3045833333333333,
+          "tpr_at_fpr_0.01": 0.14041666666666666,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        }
+      },
+      "domain": {
+        "abstracts": {
+          "auroc": 0.7784188552188551,
+          "tpr_at_fpr_0.05": 0.4290909090909091,
+          "tpr_at_fpr_0.01": 0.24696969696969698,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "books": {
+          "auroc": 0.7477727272727273,
+          "tpr_at_fpr_0.05": 0.3496969696969697,
+          "tpr_at_fpr_0.01": 0.17393939393939395,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "news": {
+          "auroc": 0.7342639730639731,
+          "tpr_at_fpr_0.05": 0.3890909090909091,
+          "tpr_at_fpr_0.01": 0.21424242424242423,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "poetry": {
+          "auroc": 0.7601710437710438,
+          "tpr_at_fpr_0.05": 0.38484848484848483,
+          "tpr_at_fpr_0.01": 0.21333333333333335,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "recipes": {
+          "auroc": 0.6393074074074074,
+          "tpr_at_fpr_0.05": 0.3006060606060606,
+          "tpr_at_fpr_0.01": 0.15484848484848485,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "reddit": {
+          "auroc": 0.7736602693602694,
+          "tpr_at_fpr_0.05": 0.353030303030303,
+          "tpr_at_fpr_0.01": 0.2409090909090909,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "reviews": {
+          "auroc": 0.7397392023685128,
+          "tpr_at_fpr_0.05": 0.3839393939393939,
+          "tpr_at_fpr_0.01": 0.18696969696969698,
+          "n_machine": 3300.0,
+          "n_human": 696.0
+        },
+        "wiki": {
+          "auroc": 0.7441042087542088,
+          "tpr_at_fpr_0.05": 0.31787878787878787,
+          "tpr_at_fpr_0.01": 0.1784848484848485,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        }
+      },
+      "attack": {
+        "alternative_spelling": {
+          "auroc": 0.7741956767503508,
+          "tpr_at_fpr_0.05": 0.4354545454545454,
+          "tpr_at_fpr_0.01": 0.27954545454545454,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "article_deletion": {
+          "auroc": 0.7403222620718333,
+          "tpr_at_fpr_0.05": 0.3336363636363636,
+          "tpr_at_fpr_0.01": 0.2018181818181818,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "homoglyph": {
+          "auroc": 0.577627800301471,
+          "tpr_at_fpr_0.05": 0.02090909090909091,
+          "tpr_at_fpr_0.01": 0.006818181818181818,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "insert_paragraphs": {
+          "auroc": 0.7658981106086593,
+          "tpr_at_fpr_0.05": 0.4163636363636364,
+          "tpr_at_fpr_0.01": 0.2540909090909091,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "none": {
+          "auroc": 0.7904305707157336,
+          "tpr_at_fpr_0.05": 0.4859090909090909,
+          "tpr_at_fpr_0.01": 0.32272727272727275,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "number": {
+          "auroc": 0.7255155218566454,
+          "tpr_at_fpr_0.05": 0.4068181818181818,
+          "tpr_at_fpr_0.01": 0.2636363636363636,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "paraphrase": {
+          "auroc": 0.8945151775040283,
+          "tpr_at_fpr_0.05": 0.5495454545454546,
+          "tpr_at_fpr_0.01": 0.29818181818181816,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "perplexity_misspelling": {
+          "auroc": 0.7668415393211705,
+          "tpr_at_fpr_0.05": 0.4159090909090909,
+          "tpr_at_fpr_0.01": 0.26681818181818184,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "synonym": {
+          "auroc": 0.5112626695774208,
+          "tpr_at_fpr_0.05": 0.13,
+          "tpr_at_fpr_0.01": 0.07045454545454545,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "upper_lower": {
+          "auroc": 0.700154243983575,
+          "tpr_at_fpr_0.05": 0.2868181818181818,
+          "tpr_at_fpr_0.01": 0.15545454545454546,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "whitespace": {
+          "auroc": 0.6746605852695047,
+          "tpr_at_fpr_0.05": 0.21954545454545454,
+          "tpr_at_fpr_0.01": 0.09863636363636363,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "zero_width_space": {
+          "auroc": 0.9441568233795935,
+          "tpr_at_fpr_0.05": 0.5677272727272727,
+          "tpr_at_fpr_0.01": 0.1368181818181818,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        }
+      }
+    }
+  },
+  "seen_vs_unseen": {
+    "unseen": null
+  },
+  "calibration_transfer": [
+    {
+      "calibration_domain": "abstracts",
+      "eval_domain": "abstracts",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05,
+      "tpr": 0.4290909090909091
+    },
+    {
+      "calibration_domain": "abstracts",
+      "eval_domain": "books",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.013333333333333334,
+      "tpr": 0.1921212121212121
+    },
+    {
+      "calibration_domain": "abstracts",
+      "eval_domain": "news",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.015555555555555555,
+      "tpr": 0.25363636363636366
+    },
+    {
+      "calibration_domain": "abstracts",
+      "eval_domain": "poetry",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.012222222222222223,
+      "tpr": 0.22090909090909092
+    },
+    {
+      "calibration_domain": "abstracts",
+      "eval_domain": "recipes",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.006666666666666667,
+      "tpr": 0.14727272727272728
+    },
+    {
+      "calibration_domain": "abstracts",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.012222222222222223,
+      "tpr": 0.24666666666666667
+    },
+    {
+      "calibration_domain": "abstracts",
+      "eval_domain": "reviews",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.02442528735632184,
+      "tpr": 0.2606060606060606
+    },
+    {
+      "calibration_domain": "abstracts",
+      "eval_domain": "wiki",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.028888888888888888,
+      "tpr": 0.2384848484848485
+    },
+    {
+      "calibration_domain": "books",
+      "eval_domain": "abstracts",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.10222222222222223,
+      "tpr": 0.5675757575757576
+    },
+    {
+      "calibration_domain": "books",
+      "eval_domain": "books",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05,
+      "tpr": 0.3496969696969697
+    },
+    {
+      "calibration_domain": "books",
+      "eval_domain": "news",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06,
+      "tpr": 0.413030303030303
+    },
+    {
+      "calibration_domain": "books",
+      "eval_domain": "poetry",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04,
+      "tpr": 0.36272727272727273
+    },
+    {
+      "calibration_domain": "books",
+      "eval_domain": "recipes",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.042222222222222223,
+      "tpr": 0.2584848484848485
+    },
+    {
+      "calibration_domain": "books",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06222222222222222,
+      "tpr": 0.4024242424242424
+    },
+    {
+      "calibration_domain": "books",
+      "eval_domain": "reviews",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06896551724137931,
+      "tpr": 0.4409090909090909
+    },
+    {
+      "calibration_domain": "books",
+      "eval_domain": "wiki",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.08888888888888889,
+      "tpr": 0.40060606060606063
+    },
+    {
+      "calibration_domain": "news",
+      "eval_domain": "abstracts",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.09555555555555556,
+      "tpr": 0.5481818181818182
+    },
+    {
+      "calibration_domain": "news",
+      "eval_domain": "books",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.042222222222222223,
+      "tpr": 0.3236363636363636
+    },
+    {
+      "calibration_domain": "news",
+      "eval_domain": "news",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05,
+      "tpr": 0.3890909090909091
+    },
+    {
+      "calibration_domain": "news",
+      "eval_domain": "poetry",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03222222222222222,
+      "tpr": 0.33636363636363636
+    },
+    {
+      "calibration_domain": "news",
+      "eval_domain": "recipes",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03666666666666667,
+      "tpr": 0.2406060606060606
+    },
+    {
+      "calibration_domain": "news",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05333333333333334,
+      "tpr": 0.37727272727272726
+    },
+    {
+      "calibration_domain": "news",
+      "eval_domain": "reviews",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06465517241379311,
+      "tpr": 0.4093939393939394
+    },
+    {
+      "calibration_domain": "news",
+      "eval_domain": "wiki",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.07333333333333333,
+      "tpr": 0.3790909090909091
+    },
+    {
+      "calibration_domain": "poetry",
+      "eval_domain": "abstracts",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.10777777777777778,
+      "tpr": 0.5818181818181818
+    },
+    {
+      "calibration_domain": "poetry",
+      "eval_domain": "books",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06222222222222222,
+      "tpr": 0.37575757575757573
+    },
+    {
+      "calibration_domain": "poetry",
+      "eval_domain": "news",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06888888888888889,
+      "tpr": 0.43636363636363634
+    },
+    {
+      "calibration_domain": "poetry",
+      "eval_domain": "poetry",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05,
+      "tpr": 0.38484848484848483
+    },
+    {
+      "calibration_domain": "poetry",
+      "eval_domain": "recipes",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.043333333333333335,
+      "tpr": 0.2739393939393939
+    },
+    {
+      "calibration_domain": "poetry",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06777777777777778,
+      "tpr": 0.42848484848484847
+    },
+    {
+      "calibration_domain": "poetry",
+      "eval_domain": "reviews",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.07902298850574713,
+      "tpr": 0.4603030303030303
+    },
+    {
+      "calibration_domain": "poetry",
+      "eval_domain": "wiki",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.09555555555555556,
+      "tpr": 0.4212121212121212
+    },
+    {
+      "calibration_domain": "recipes",
+      "eval_domain": "abstracts",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.12,
+      "tpr": 0.6
+    },
+    {
+      "calibration_domain": "recipes",
+      "eval_domain": "books",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.07333333333333333,
+      "tpr": 0.4012121212121212
+    },
+    {
+      "calibration_domain": "recipes",
+      "eval_domain": "news",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.08555555555555555,
+      "tpr": 0.4636363636363636
+    },
+    {
+      "calibration_domain": "recipes",
+      "eval_domain": "poetry",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06,
+      "tpr": 0.4124242424242424
+    },
+    {
+      "calibration_domain": "recipes",
+      "eval_domain": "recipes",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05,
+      "tpr": 0.3006060606060606
+    },
+    {
+      "calibration_domain": "recipes",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.07222222222222222,
+      "tpr": 0.46090909090909093
+    },
+    {
+      "calibration_domain": "recipes",
+      "eval_domain": "reviews",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.09482758620689655,
+      "tpr": 0.49363636363636365
+    },
+    {
+      "calibration_domain": "recipes",
+      "eval_domain": "wiki",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.10888888888888888,
+      "tpr": 0.45121212121212123
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "abstracts",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.09,
+      "tpr": 0.53
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "books",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03777777777777778,
+      "tpr": 0.2990909090909091
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "news",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04,
+      "tpr": 0.36424242424242426
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "poetry",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.028888888888888888,
+      "tpr": 0.3151515151515151
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "recipes",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03333333333333333,
+      "tpr": 0.22090909090909092
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05,
+      "tpr": 0.353030303030303
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "reviews",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05028735632183908,
+      "tpr": 0.38515151515151513
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "wiki",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06333333333333334,
+      "tpr": 0.353030303030303
+    },
+    {
+      "calibration_domain": "reviews",
+      "eval_domain": "abstracts",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.09,
+      "tpr": 0.5290909090909091
+    },
+    {
+      "calibration_domain": "reviews",
+      "eval_domain": "books",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03777777777777778,
+      "tpr": 0.296969696969697
+    },
+    {
+      "calibration_domain": "reviews",
+      "eval_domain": "news",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04,
+      "tpr": 0.36303030303030304
+    },
+    {
+      "calibration_domain": "reviews",
+      "eval_domain": "poetry",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.028888888888888888,
+      "tpr": 0.3145454545454546
+    },
+    {
+      "calibration_domain": "reviews",
+      "eval_domain": "recipes",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03333333333333333,
+      "tpr": 0.22
+    },
+    {
+      "calibration_domain": "reviews",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05,
+      "tpr": 0.3521212121212121
+    },
+    {
+      "calibration_domain": "reviews",
+      "eval_domain": "reviews",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04885057471264368,
+      "tpr": 0.3839393939393939
+    },
+    {
+      "calibration_domain": "reviews",
+      "eval_domain": "wiki",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06222222222222222,
+      "tpr": 0.3512121212121212
+    },
+    {
+      "calibration_domain": "wiki",
+      "eval_domain": "abstracts",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.08222222222222222,
+      "tpr": 0.49787878787878787
+    },
+    {
+      "calibration_domain": "wiki",
+      "eval_domain": "books",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.02666666666666667,
+      "tpr": 0.2606060606060606
+    },
+    {
+      "calibration_domain": "wiki",
+      "eval_domain": "news",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.02666666666666667,
+      "tpr": 0.3212121212121212
+    },
+    {
+      "calibration_domain": "wiki",
+      "eval_domain": "poetry",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.022222222222222223,
+      "tpr": 0.28484848484848485
+    },
+    {
+      "calibration_domain": "wiki",
+      "eval_domain": "recipes",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.024444444444444446,
+      "tpr": 0.19363636363636363
+    },
+    {
+      "calibration_domain": "wiki",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03222222222222222,
+      "tpr": 0.31333333333333335
+    },
+    {
+      "calibration_domain": "wiki",
+      "eval_domain": "reviews",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.041666666666666664,
+      "tpr": 0.3390909090909091
+    },
+    {
+      "calibration_domain": "wiki",
+      "eval_domain": "wiki",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05,
+      "tpr": 0.31787878787878787
+    }
+  ]
+}

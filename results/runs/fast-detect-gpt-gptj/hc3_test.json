@@ -1,0 +1,281 @@
+{
+  "run": "fast-detect-gpt-gptj",
+  "config": {
+    "name": "fast-detect-gpt-gptj",
+    "seed": 0,
+    "model": {
+      "type": "fast_detect_gpt",
+      "scorer": "EleutherAI/gpt-neo-2.7B",
+      "sampler": "EleutherAI/gpt-j-6B",
+      "max_tokens": 512
+    },
+    "train": null,
+    "eval": [
+      {
+        "dataset": "raid",
+        "split": "eval"
+      },
+      {
+        "dataset": "mage",
+        "split": "test",
+        "sample": 12000
+      },
+      {
+        "dataset": "hc3",
+        "split": "test",
+        "sample": 8000
+      }
+    ]
+  },
+  "git_commit": "b5df916",
+  "train_rows": 0,
+  "train_seconds": 0.0,
+  "eval": "hc3/test",
+  "n_eval": 8000,
+  "metrics": {
+    "overall": {
+      "auroc": 0.9928043972785088,
+      "tpr_at_fpr_0.05": 0.9849409849409849,
+      "tpr_at_fpr_0.01": 0.9568579568579568,
+      "n_machine": 2457.0,
+      "n_human": 5543.0
+    },
+    "slices": {
+      "generator": {
+        "chatgpt": {
+          "auroc": 0.9928043972785088,
+          "tpr_at_fpr_0.05": 0.9849409849409849,
+          "tpr_at_fpr_0.01": 0.9568579568579568,
+          "n_machine": 2457.0,
+          "n_human": 5543.0
+        }
+      },
+      "domain": {
+        "finance": {
+          "auroc": 0.9872564357843834,
+          "tpr_at_fpr_0.05": 0.9772151898734177,
+          "tpr_at_fpr_0.01": 0.9670886075949368,
+          "n_machine": 395.0,
+          "n_human": 356.0
+        },
+        "medicine": {
+          "auroc": 0.9862060546875,
+          "tpr_at_fpr_0.05": 0.96875,
+          "tpr_at_fpr_0.01": 0.9609375,
+          "n_machine": 128.0,
+          "n_human": 128.0
+        },
+        "open_qa": {
+          "auroc": 0.9939099340708458,
+          "tpr_at_fpr_0.05": 0.9745222929936306,
+          "tpr_at_fpr_0.01": 0.9171974522292994,
+          "n_machine": 314.0,
+          "n_human": 114.0
+        },
+        "reddit_eli5": {
+          "auroc": 0.9950793252102133,
+          "tpr_at_fpr_0.05": 0.9915912031047865,
+          "tpr_at_fpr_0.01": 0.963130659767141,
+          "n_machine": 1546.0,
+          "n_human": 4862.0
+        },
+        "wiki_csai": {
+          "auroc": 0.9985346792575708,
+          "tpr_at_fpr_0.05": 0.9864864864864865,
+          "tpr_at_fpr_0.01": 0.972972972972973,
+          "n_machine": 74.0,
+          "n_human": 83.0
+        }
+      },
+      "attack": {
+        "none": {
+          "auroc": 0.9928043972785088,
+          "tpr_at_fpr_0.05": 0.9849409849409849,
+          "tpr_at_fpr_0.01": 0.9568579568579568,
+          "n_machine": 2457.0,
+          "n_human": 5543.0
+        }
+      }
+    }
+  },
+  "seen_vs_unseen": {
+    "unseen": null
+  },
+  "calibration_transfer": [
+    {
+      "calibration_domain": "finance",
+      "eval_domain": "finance",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.047752808988764044,
+      "tpr": 0.9772151898734177
+    },
+    {
+      "calibration_domain": "finance",
+      "eval_domain": "medicine",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0234375,
+      "tpr": 0.9609375
+    },
+    {
+      "calibration_domain": "finance",
+      "eval_domain": "open_qa",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03508771929824561,
+      "tpr": 0.9713375796178344
+    },
+    {
+      "calibration_domain": "finance",
+      "eval_domain": "reddit_eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.051007815713698064,
+      "tpr": 0.9915912031047865
+    },
+    {
+      "calibration_domain": "finance",
+      "eval_domain": "wiki_csai",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0963855421686747,
+      "tpr": 0.9864864864864865
+    },
+    {
+      "calibration_domain": "medicine",
+      "eval_domain": "finance",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0702247191011236,
+      "tpr": 0.979746835443038
+    },
+    {
+      "calibration_domain": "medicine",
+      "eval_domain": "medicine",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.046875,
+      "tpr": 0.96875
+    },
+    {
+      "calibration_domain": "medicine",
+      "eval_domain": "open_qa",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06140350877192982,
+      "tpr": 0.9745222929936306
+    },
+    {
+      "calibration_domain": "medicine",
+      "eval_domain": "reddit_eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06910736322501028,
+      "tpr": 0.9922380336351876
+    },
+    {
+      "calibration_domain": "medicine",
+      "eval_domain": "wiki_csai",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.10843373493975904,
+      "tpr": 1.0
+    },
+    {
+      "calibration_domain": "open_qa",
+      "eval_domain": "finance",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06460674157303371,
+      "tpr": 0.9772151898734177
+    },
+    {
+      "calibration_domain": "open_qa",
+      "eval_domain": "medicine",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.046875,
+      "tpr": 0.9609375
+    },
+    {
+      "calibration_domain": "open_qa",
+      "eval_domain": "open_qa",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.043859649122807015,
+      "tpr": 0.9745222929936306
+    },
+    {
+      "calibration_domain": "open_qa",
+      "eval_domain": "reddit_eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06108597285067873,
+      "tpr": 0.9915912031047865
+    },
+    {
+      "calibration_domain": "open_qa",
+      "eval_domain": "wiki_csai",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.10843373493975904,
+      "tpr": 1.0
+    },
+    {
+      "calibration_domain": "reddit_eli5",
+      "eval_domain": "finance",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.047752808988764044,
+      "tpr": 0.9772151898734177
+    },
+    {
+      "calibration_domain": "reddit_eli5",
+      "eval_domain": "medicine",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0234375,
+      "tpr": 0.9609375
+    },
+    {
+      "calibration_domain": "reddit_eli5",
+      "eval_domain": "open_qa",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03508771929824561,
+      "tpr": 0.9713375796178344
+    },
+    {
+      "calibration_domain": "reddit_eli5",
+      "eval_domain": "reddit_eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04997943233237351,
+      "tpr": 0.9915912031047865
+    },
+    {
+      "calibration_domain": "reddit_eli5",
+      "eval_domain": "wiki_csai",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0963855421686747,
+      "tpr": 0.9864864864864865
+    },
+    {
+      "calibration_domain": "wiki_csai",
+      "eval_domain": "finance",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03932584269662921,
+      "tpr": 0.9772151898734177
+    },
+    {
+      "calibration_domain": "wiki_csai",
+      "eval_domain": "medicine",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0234375,
+      "tpr": 0.9609375
+    },
+    {
+      "calibration_domain": "wiki_csai",
+      "eval_domain": "open_qa",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.02631578947368421,
+      "tpr": 0.9554140127388535
+    },
+    {
+      "calibration_domain": "wiki_csai",
+      "eval_domain": "reddit_eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0374331550802139,
+      "tpr": 0.9896507115135834
+    },
+    {
+      "calibration_domain": "wiki_csai",
+      "eval_domain": "wiki_csai",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04819277108433735,
+      "tpr": 0.9864864864864865
+    }
+  ]
+}

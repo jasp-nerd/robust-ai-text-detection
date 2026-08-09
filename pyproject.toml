@@ -17,6 +17,8 @@ dependencies = [
     "pyyaml>=6.0",
     "tqdm>=4.66",
     "matplotlib>=3.9",
+    "bitsandbytes>=0.44; sys_platform == 'linux'",
+    "accelerate>=1.0",
 ]
 
 [dependency-groups]

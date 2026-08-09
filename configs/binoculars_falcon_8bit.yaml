@@ -1,0 +1,21 @@
+# Binoculars, paper-faithful pair: Falcon-7B (observer) + Falcon-7B-Instruct (performer),
+# 8-bit quantized (~15GB) to fit the 24GB L4. Quantization is a deviation from the paper's
+# bf16 — reported as such.
+name: binoculars-falcon7b-8bit
+seed: 0
+model:
+  type: binoculars
+  observer: tiiuae/falcon-7b
+  performer: tiiuae/falcon-7b-instruct
+  max_tokens: 512
+  load_in_8bit: true
+train: null
+eval:
+  - dataset: raid
+    split: eval
+  - dataset: mage
+    split: test
+    sample: 12000
+  - dataset: hc3
+    split: test
+    sample: 8000
