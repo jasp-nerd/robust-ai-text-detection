@@ -1,0 +1,13 @@
+name: stylometric-gbm-mage
+seed: 0
+model:
+  type: stylometric_gbm
+train:
+  dataset: mage
+  split: train
+  filter_artifacts: true
+eval:
+  - dataset: mage
+    split: test
+  - dataset: hc3
+    split: test

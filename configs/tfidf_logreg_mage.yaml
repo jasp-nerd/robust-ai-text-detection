@@ -1,0 +1,14 @@
+name: tfidf-logreg-mage
+seed: 0
+model:
+  type: tfidf_logreg
+  max_features: 100000
+train:
+  dataset: mage
+  split: train
+  filter_artifacts: true
+eval:
+  - dataset: mage
+    split: test
+  - dataset: hc3
+    split: test

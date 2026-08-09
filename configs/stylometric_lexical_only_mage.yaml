@@ -1,0 +1,16 @@
+# Ablation: only the three lexical-richness features that El Attar et al. (2026) found
+# robust across generators and domains.
+name: stylometric-lexical-only-mage
+seed: 0
+model:
+  type: stylometric_gbm
+  feature_subset: [type_token_ratio, hapax_proportion, lexical_density]
+train:
+  dataset: mage
+  split: train
+  filter_artifacts: true
+eval:
+  - dataset: mage
+    split: test
+  - dataset: hc3
+    split: test
