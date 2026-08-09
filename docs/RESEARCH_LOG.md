@@ -103,3 +103,60 @@ full generator×domain×attack grid). Configs in `configs/`, artifacts in `resul
 **Decision.** Keep TF-IDF+logreg as the running reference baseline in all future tables.
 Keep the full stylometric GBM for interpretability analyses only; drop the
 lexical-only variant from the headline table (kept in `results/` as a negative result).
+
+---
+
+## 2026-08-09 — Phases 3b/3c (first wave): zero-shot vs supervised, and the attack asymmetry
+
+*(All runs on the VU compute servers: L4 24GB, shared. Tables regenerable via
+`scripts/make_tables.py`.)*
+
+**Hypotheses.** (a) Fine-tuned encoders dominate in-distribution but drop hard on RAID;
+zero-shot statistical detectors degrade less across datasets. (b) ModernBERT > RoBERTa
+as detector backbone (2026 consensus). (c) Attacks hit method families differently.
+
+**Setup.** Supervised: RoBERTa-base and ModernBERT-base, vanilla fine-tune on MAGE train
+(318K, artifact-filtered, seed 0). Zero-shot: Fast-DetectGPT (paper-faithful black-box:
+GPT-J-6B sampler + GPT-Neo-2.7B scorer, analytic form) and Binoculars with a small
+Qwen2.5-0.5B pair (the Falcon-7B pair OOMed beside a 17GB neighbor process; 8-bit rerun
+in progress). Evals: MAGE test / HC3 / RAID eval grid (33.4K, 11 generators × 8 domains
+× 12 attack conditions).
+
+| detector | MAGE AUROC / TPR@1% | HC3 | RAID eval |
+|---|---|---|---|
+| ModernBERT-base (MAGE) | 0.981 / 0.845 | 0.994 / 0.941 | **0.875** / 0.310 |
+| RoBERTa-base (MAGE) | 0.976 / 0.708 | 0.985 / 0.900 | 0.825 / 0.258 |
+| Fast-DetectGPT (GPT-J) | 0.628 / 0.289 | 0.993 / 0.957 | 0.809 / **0.319** |
+| Binoculars (0.5B pair) | 0.595 / 0.112 | 0.954 / 0.486 | 0.739 / 0.196 |
+| TF-IDF + logreg (ref) | 0.804 / 0.195 | 0.868 / 0.237 | 0.750 / 0.124 |
+
+**Findings.**
+1. (a) confirmed with a twist: ModernBERT wins RAID *AUROC*, but Fast-DetectGPT wins
+   RAID *TPR@1%FPR* — the supervised advantage disappears exactly in the operating
+   regime that matters. Fast-DetectGPT's MAGE weakness (0.628) traces to MAGE's many
+   base-model generators (OPT/T5/GPT-J family text looks "human" to a GPT-J sampler —
+   scoring-model relatedness cuts both ways).
+2. (b) confirmed: ModernBERT > RoBERTa on every eval at every metric (+0.05 AUROC /
+   +5pp TPR@1% on RAID).
+3. (c) confirmed, and the asymmetry is sharp (TPR@5% by attack, RAID):
+   - **homoglyph** breaks everyone (ModernBERT 0.71→0.03; FDG 0.66→0.08);
+   - **zero_width_space** breaks only the encoders (ModernBERT 0.05, RoBERTa 0.06)
+     while LLM scorers barely notice (FDG 0.55, Binoculars 0.57);
+   - **synonym swap** breaks the statistical methods (FDG 0.19, Binoculars 0.13) but
+     not ModernBERT (0.52);
+   - **paraphrase** *helps* RoBERTa (0.61 vs 0.57 clean) — RAID's
+     attack-toward-training-distribution effect, reproduced.
+4. Binoculars at 0.5B scale is far below its paper numbers (7B pair) — observer scale
+   matters; the 8-bit Falcon run will quantify the gap.
+5. Seed variance (3 seeds, TF-IDF + stylometric): AUROC stable (±0.007), but RAID
+   TPR@5% for the weak stylometric model swings 0.05–0.13 across seeds. **Low-FPR
+   metrics of weak detectors are seed-unstable; single-seed low-FPR claims near the
+   noise floor are not meaningful.**
+
+**Decisions.**
+- Phase 3d intervention order: (1) Unicode/NFKC normalization as input defense — the
+  attack table says it should recover both character-level attacks almost for free;
+  (2) supervised+statistical ensemble (their failure modes are complementary on every
+  axis measured); (3) attack-augmented training for the encoder; (4) RAID-train mixture.
+- ModernBERT-base is the supervised backbone going forward; RoBERTa retired to
+  reference-row status.
