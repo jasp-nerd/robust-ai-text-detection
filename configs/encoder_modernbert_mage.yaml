@@ -1,6 +1,7 @@
 # ModernBERT-base fine-tune — the 2026-default backbone. Needs ~10GB (mostly-free L4).
 name: encoder-modernbert-base-mage
 seed: 0
+save_model: true
 model:
   type: encoder
   model_name: answerdotai/ModernBERT-base

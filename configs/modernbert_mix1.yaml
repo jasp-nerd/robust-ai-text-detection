@@ -4,6 +4,7 @@
 # HC3 is the only fully-OOD eval here.
 name: modernbert-mix1
 seed: 0
+save_model: true
 model:
   type: encoder
   model_name: answerdotai/ModernBERT-base
