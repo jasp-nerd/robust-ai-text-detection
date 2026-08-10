@@ -193,3 +193,45 @@ for now Binoculars-at-accessible-scale is simply not competitive with Fast-Detec
 
 **Decision.** Fast-DetectGPT (Neo-2.7B) is the zero-shot representative for Phase 3d
 ensembling. Phase 3b closed; Falcon replication stays on the backlog.
+
+---
+
+## 2026-08-10 — Phase 3d, interventions 1+2: normalization defense and the ensemble
+
+**Hypotheses.** (1) Unicode/NFKC normalization + zero-width stripping + a small
+confusables map recovers the character-level attacks (homoglyph, zero-width) at no cost
+elsewhere. (2) Rank-averaging the supervised (ModernBERT-MAGE) and zero-shot
+(Fast-DetectGPT Neo) scores beats both — their failure modes are complementary.
+
+**Setup.** Both detectors re-scored the RAID eval grid twice (clean inputs vs
+normalized inputs), dumping per-sample scores; ensemble = mean of within-run score
+ranks, no learned weights (`scripts/analyze_ensemble.py`). Clean re-scores reproduced
+the previous runs' numbers (FDG exactly; ModernBERT retrained: AUROC matched to 0.001,
+TPR@1% differed 0.31→0.38 across retrains — training nondeterminism on identical data;
+noted as a caveat for all single-run TPR@1% claims).
+
+**Results (RAID eval, all conditions incl. attacks):**
+
+| detector | AUROC | TPR@5% | TPR@1% |
+|---|---|---|---|
+| ModernBERT clean | 0.874 | 0.468 | 0.378 |
+| ModernBERT normalized | 0.927 | 0.637 | 0.448 |
+| FDG-neo clean | 0.798 | 0.556 | 0.416 |
+| FDG-neo normalized | 0.829 | 0.672 | 0.528 |
+| Ensemble clean | 0.902 | 0.544 | 0.428 |
+| **Ensemble normalized** | **0.947** | **0.761** | **0.582** |
+
+Per-attack (FDG, TPR@5%): homoglyph 0.078→**0.773**, zero-width 0.199→**0.761** —
+both restored to clean level (0.757); every other attack unchanged or slightly up.
+Synonym substitution remains the open weakness (0.29→0.31).
+
+**Findings.** Both hypotheses confirmed. The stacked pipeline (normalize → both
+detectors → rank-average) more than **quadruples** the best simple baseline's TPR@1%
+under attack (0.124 → 0.582) with zero additional training. Normalization is a pure
+Pareto improvement and should be a default preprocessing step for any detector —
+notable that no leaderboard we reviewed mandates it.
+
+**Decision.** One experiment left: the curated MAGE+RAID training mixture
+(ModernBERT), testing the literature's top-ranked intervention. Caveat pre-registered
+in `scripts/make_mixture.py`: with RAID in training, RAID eval becomes
+semi-in-distribution; HC3 stays the only fully-OOD eval for that model.
