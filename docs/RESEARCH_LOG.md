@@ -160,3 +160,36 @@ in progress). Evals: MAGE test / HC3 / RAID eval grid (33.4K, 11 generators × 8
   axis measured); (3) attack-augmented training for the encoder; (4) RAID-train mixture.
 - ModernBERT-base is the supervised backbone going forward; RoBERTa retired to
   reference-row status.
+
+---
+
+## 2026-08-10 — Phase 3b complete: two zero-shot surprises
+
+**Setup.** Final two zero-shot runs: Fast-DetectGPT with sampler = scorer = GPT-Neo-2.7B
+(the paper's cheaper Table-9 variant), and Binoculars with a Qwen2.5-3B pair (the
+Falcon-7B 8-bit replication is backlogged: transformers' caching-allocator warmup
+pre-allocates fp16-sized memory for quantized models and OOMs the 24GB L4).
+
+| config | RAID AUROC | RAID TPR@5% | RAID TPR@1% | HC3 AUROC | MAGE AUROC |
+|---|---|---|---|---|---|
+| FDG, GPT-J-6B sampler + Neo scorer | **0.809** | 0.488 | 0.319 | 0.993 | 0.628 |
+| FDG, Neo-2.7B sampler = scorer | 0.798 | **0.556** | **0.416** | 0.993 | 0.604 |
+| Binoculars 0.5B pair | 0.739 | 0.356 | 0.196 | 0.954 | 0.595 |
+| Binoculars 3B pair | 0.726 | 0.395 | 0.216 | 0.926 | 0.612 |
+
+**Surprise 1 — the cheap config wins where it matters.** The single-model Neo-2.7B
+variant has slightly *lower* RAID AUROC than the paper-faithful GPT-J config but far
+*higher* TPR at low FPR (0.416 vs 0.319 at 1% — the best of ALL eleven runs so far,
+supervised included). AUROC ranking and low-FPR ranking disagree between two variants
+of the *same method* — the strongest instance yet of the field's warning that AUROC is
+the wrong lens. Hypothesis: self-sampling produces a tighter human score distribution
+(thinner right tail), which is what low-FPR thresholds reward.
+
+**Surprise 2 — Binoculars does not simply scale.** 0.5B → 3B changed RAID AUROC from
+0.739 to 0.726 (down), TPR@1% from 0.196 to 0.216 (up a little), HC3 down. The paper's
+Falcon-7B strength evidently isn't raw observer scale — pair matching (how close
+base and instruct siblings are) plausibly matters more. Worth a controlled follow-up;
+for now Binoculars-at-accessible-scale is simply not competitive with Fast-DetectGPT.
+
+**Decision.** Fast-DetectGPT (Neo-2.7B) is the zero-shot representative for Phase 3d
+ensembling. Phase 3b closed; Falcon replication stays on the backlog.
