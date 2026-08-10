@@ -125,8 +125,19 @@ def main() -> None:
             df = df.sample(min(ev["sample"], len(df)), seed=seed)
         if args.limit:
             df = df.sample(min(args.limit * 2, len(df)), seed=seed)
-        scores = model.predict_scores(df["text"].to_list())
+        texts = df["text"].to_list()
+        variant = ""
+        if ev.get("normalize_unicode"):
+            from detector.data.normalize import normalize_text
+
+            texts = [normalize_text(t) for t in texts]
+            variant = "_norm"
+        scores = model.predict_scores(texts)
         scored = df.with_columns(pl.Series("score", np.asarray(scores)))
+        if ev.get("save_scores"):
+            scored.drop("text").write_parquet(
+                run_dir / f"{ev['dataset']}_{ev['split']}{variant}_scores.parquet"
+            )
         scored = scored.with_columns(
             (pl.col("generator").is_in(sorted(train_generators)) | (pl.col("label") == 0)).alias(
                 "generator_seen"
@@ -151,11 +162,11 @@ def main() -> None:
             },
             "calibration_transfer": calibration_transfer(scored).to_dicts(),
         }
-        out_path = run_dir / f"{ev['dataset']}_{ev['split']}.json"
+        out_path = run_dir / f"{ev['dataset']}_{ev['split']}{variant}.json"
         out_path.write_text(json.dumps(result, indent=2))
         o = result["metrics"]["overall"]
         print(
-            f"{name} on {ev['dataset']}/{ev['split']}: "
+            f"{name} on {ev['dataset']}/{ev['split']}{variant}: "
             f"AUROC {o['auroc']:.4f} | TPR@5% {o['tpr_at_fpr_0.05']:.4f} | "
             f"TPR@1% {o['tpr_at_fpr_0.01']:.4f}  -> {out_path}"
         )

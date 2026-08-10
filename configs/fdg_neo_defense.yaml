@@ -1,0 +1,17 @@
+# Phase 3d intervention 1+2 groundwork: Fast-DetectGPT (Neo-2.7B) on RAID eval,
+# clean vs Unicode-normalized inputs, dumping per-sample scores for ensembling.
+name: fdg-neo-defense
+seed: 0
+model:
+  type: fast_detect_gpt
+  scorer: EleutherAI/gpt-neo-2.7B
+  max_tokens: 512
+train: null
+eval:
+  - dataset: raid
+    split: eval
+    save_scores: true
+  - dataset: raid
+    split: eval
+    normalize_unicode: true
+    save_scores: true

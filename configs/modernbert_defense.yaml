@@ -1,0 +1,24 @@
+# Phase 3d: ModernBERT-base retrained (same recipe as encoder_modernbert_mage), then
+# RAID eval clean vs Unicode-normalized, dumping per-sample scores for ensembling.
+name: modernbert-defense
+seed: 0
+model:
+  type: encoder
+  model_name: answerdotai/ModernBERT-base
+  max_tokens: 512
+  batch_size: 16
+  grad_accum: 2
+  epochs: 1
+  lr: 3.0e-5
+train:
+  dataset: mage
+  split: train
+  filter_artifacts: true
+eval:
+  - dataset: raid
+    split: eval
+    save_scores: true
+  - dataset: raid
+    split: eval
+    normalize_unicode: true
+    save_scores: true
