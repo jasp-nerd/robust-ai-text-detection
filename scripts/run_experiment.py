@@ -114,6 +114,9 @@ def main() -> None:
         train_generators = set(train["generator"].unique().to_list())
         train_rows = len(train)
         print(f"trained {cfg['model']['type']} on {train_rows:,} rows in {train_seconds:.0f}s")
+        if cfg.get("save_model") and hasattr(model, "save"):
+            model.save(str(run_dir / "model"))
+            print(f"saved model to {run_dir / 'model'}")
 
     commit = subprocess.run(
         ["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True
