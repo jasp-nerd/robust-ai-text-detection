@@ -115,7 +115,12 @@ Near-perfect in-distribution; the research question is entirely about what survi
 - **Feature-based:** Ghostbuster's weak-LM feature search beat its own RoBERTa baseline OOD by
   13.8 F1 [verma2024ghostbuster]. Of 284 interpretable linguistic features, **only lexical
   richness (type–token ratio, hapax legomena, lexical density) survives across 27 generators and
-  10 domains**; several feature groups actively hurt OOD [elattar2026linguistic].
+  10 domains**; several feature groups actively hurt OOD [elattar2026linguistic]. Outside the
+  academic literature, Wikipedia's AI-cleanup community maintains a living catalogue of LLM
+  stylistic markers ("AI vocabulary", formulaic parallelisms, boilerplate emphasis patterns)
+  with model-era-specific vocabularies [wikipedia2026aisigns] — practitioner knowledge that both
+  informs feature engineering and documents how fast these surface cues drift between model
+  generations, a caution against any detector built on them.
 
 ### 3.3 Ranked evidence: what improves OOD/adversarial robustness
 
