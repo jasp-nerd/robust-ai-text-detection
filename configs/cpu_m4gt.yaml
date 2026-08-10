@@ -1,0 +1,13 @@
+# CPU detectors on M4GT (host 2): TF-IDF reference baseline retrained on MAGE.
+name: tfidf-logreg-mage-m4gt
+seed: 0
+model:
+  type: tfidf_logreg
+  max_features: 100000
+train:
+  dataset: mage
+  split: train
+  filter_artifacts: true
+eval:
+  - dataset: m4gt
+    split: test

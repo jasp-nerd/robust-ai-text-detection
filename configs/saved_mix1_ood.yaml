@@ -1,0 +1,15 @@
+# Eval-only: the saved mix1 checkpoint on the two fully-OOD sets (M4GT, frontier).
+name: saved-mix1-ood
+seed: 0
+model:
+  type: encoder
+  model_name: results/runs/modernbert-mix1/model
+  max_tokens: 512
+  batch_size: 32
+train: null
+eval:
+  - dataset: m4gt
+    split: test
+    sample: 15000
+  - dataset: frontier
+    split: test

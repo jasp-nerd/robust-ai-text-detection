@@ -1,0 +1,13 @@
+# Binoculars 0.5B pair on M4GT (host 2 GPU, ~2GB).
+name: binoculars-qwen0.5b-m4gt
+seed: 0
+model:
+  type: binoculars
+  observer: Qwen/Qwen2.5-0.5B
+  performer: Qwen/Qwen2.5-0.5B-Instruct
+  max_tokens: 512
+train: null
+eval:
+  - dataset: m4gt
+    split: test
+    sample: 15000

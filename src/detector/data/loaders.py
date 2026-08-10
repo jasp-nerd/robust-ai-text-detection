@@ -113,8 +113,34 @@ def prepare_hc3(out_dir: Path) -> list[Path]:
     return [_write(pl.DataFrame(rows), out_dir, "hc3", "test")]
 
 
+def prepare_m4gt(out_dir: Path) -> list[Path]:
+    """M4GT-Bench English rows via the COLING-2025 shared-task mirror
+    (Jinyan1/COLING_2025_MGT_en). The mirror mixes m4gt/mage/hc3 sources; we keep
+    only source == "m4gt" so the split is a true cross-dataset eval for models
+    trained on MAGE (its generators, e.g. llama3-8b and gpt4, postdate MAGE's)."""
+    ds = load_dataset("Jinyan1/COLING_2025_MGT_en")
+    paths = []
+    for split, out_name in [("dev", "test"), ("train", "pool")]:
+        df = pl.from_arrow(ds[split].data.table)
+        df = df.filter(pl.col("source") == "m4gt").select(
+            pl.col("text"),
+            pl.col("label").cast(pl.Int64),
+            pl.when(pl.col("label").cast(pl.Int64) == 0)
+            .then(pl.lit("human"))
+            .otherwise(pl.col("model"))
+            .alias("generator"),
+            pl.col("sub_source").alias("domain"),
+            pl.lit("none").alias("attack"),
+            pl.lit("unknown").alias("decoding"),
+            pl.lit("m4gt").alias("source_dataset"),
+        )
+        paths.append(_write(df, out_dir, "m4gt", out_name))
+    return paths
+
+
 PREPARERS = {
     "mage": prepare_mage,
     "raid": prepare_raid,
     "hc3": prepare_hc3,
+    "m4gt": prepare_m4gt,
 }

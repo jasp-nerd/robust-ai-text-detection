@@ -1,0 +1,12 @@
+# Zero-shot Fast-DetectGPT on M4GT (host 1, fits ~6GB).
+name: fdg-neo-m4gt
+seed: 0
+model:
+  type: fast_detect_gpt
+  scorer: EleutherAI/gpt-neo-2.7B
+  max_tokens: 512
+train: null
+eval:
+  - dataset: m4gt
+    split: test
+    sample: 15000
