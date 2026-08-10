@@ -235,3 +235,40 @@ notable that no leaderboard we reviewed mandates it.
 (ModernBERT), testing the literature's top-ranked intervention. Caveat pre-registered
 in `scripts/make_mixture.py`: with RAID in training, RAID eval becomes
 semi-in-distribution; HC3 stays the only fully-OOD eval for that model.
+
+---
+
+## 2026-08-10 — Phase 3d complete: the data mixture, and the program's close
+
+**Hypothesis.** Per MELD's control experiment, curated training-data mixing is the
+strongest single robustness intervention; a MAGE+RAID mixture should lift attack
+robustness without costing in-distribution accuracy.
+
+**Setup.** ModernBERT-base, identical recipe to the MAGE-only run, trained on mix1:
+MAGE train + a stratified RAID train-pool sample covering every generator × domain ×
+attack cell (371,317 rows after dedup). Pre-registered caveat: RAID eval shares
+generators/domains/attacks with this training set (source documents remain disjoint),
+so its numbers measure attack/decoding exposure, not cross-dataset generalization.
+HC3 is the only fully-OOD eval for this model.
+
+| eval | MAGE-only ModernBERT | mix1 ModernBERT |
+|---|---|---|
+| RAID eval (semi-ID for mix1), TPR@1% | 0.310 | **0.905** (0.954 normalized) |
+| MAGE test, TPR@1% | 0.845 | 0.848 |
+| HC3 (fully OOD), TPR@1% | 0.941 | **0.953** |
+
+**Findings.** Hypothesis confirmed on all three axes: attack exposure is worth ~60
+points of TPR@1% on the attacked grid, in-distribution accuracy is unchanged, and the
+fully-OOD floor check improves rather than degrades. The result mirrors MELD's
+Appendix E at 1/400 of the training scale. The honest framing matters: mix1's RAID
+number is not comparable to the OOD rows in the main table, and we present it
+separately.
+
+**Program close.** Fifteen detector configurations evaluated under one harness;
+two zero-training interventions (normalization, ensembling) taking adversarial-grid
+TPR@1% from 0.124 to 0.582 without RAID exposure; one training intervention (mix1)
+reaching 0.905/0.954 with it. Remaining backlog, in order of value: a third fully-OOD
+eval dataset (M4GT) to give mixture models a fair cross-dataset test; Falcon-7B
+Binoculars once the transformers warmup bug is fixed; a frontier-generator test set
+via RAID's pipeline; publishing a trained checkpoint to Hugging Face (requires a
+save_model retrain and an HF token).

@@ -55,8 +55,8 @@ configurations; Binoculars [hans2024binoculars] with matched Qwen2.5 pairs at 0.
 3B); fine-tuned encoders (RoBERTa-base per [shen2026rethinking]; ModernBERT-base per
 [thorat2026dactyl; drayson2025collapse]); and three robustness interventions (Unicode
 input normalization, rank-average ensembling, and a curated MAGE+RAID training
-mixture, in progress). All detectors face an identical evaluation harness. Compute:
-shared NVIDIA L4 GPUs at VU Amsterdam.
+mixture). All detectors face an identical evaluation harness. Compute: shared NVIDIA
+L4 GPUs at VU Amsterdam.
 
 ## 3. Main results
 
@@ -97,8 +97,14 @@ The full table, and per-generator/domain/attack slices, regenerate with
    for a weak detector varies 2.5×; one identical retrain of ModernBERT moved TPR at
    1% FPR by 7 points. Single-run low-FPR claims near the noise floor, ours included,
    deserve skepticism.
-7. Pending: the curated MAGE+RAID training mixture [li2026meld], the top-ranked
-   intervention in the recent literature. Results will be added when the run completes.
+7. Curated data mixing works as advertised [li2026meld]. Retraining ModernBERT on
+   MAGE plus a stratified RAID sample (every generator, domain, and attack
+   represented) lifted TPR at 1% FPR on the attacked grid from 0.31 to 0.90 (0.95
+   with normalization), left MAGE accuracy unchanged, and improved the fully-OOD HC3
+   check from 0.94 to 0.95. One caution keeps this row out of the figure above: with
+   RAID in training, the RAID grid is no longer out-of-distribution for this model,
+   so its headline number measures attack exposure rather than generalization. The
+   pre-registered caveat and per-eval numbers are in the research log.
 
 ## 4. What did not work (kept on purpose)
 

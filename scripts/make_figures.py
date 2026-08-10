@@ -69,8 +69,14 @@ def fig_main_results() -> None:
         colors = [VERMILLION if r[3] else BLUE for r in data]
         ax.barh(y, vals, height=0.62, color=colors, zorder=3)
         for yi, v in zip(y, vals, strict=True):
-            ax.text(v + (xlim[1] - xlim[0]) * 0.012, yi, f"{v:.3f}",
-                    va="center", fontsize=8.5, color="#333333")
+            ax.text(
+                v + (xlim[1] - xlim[0]) * 0.012,
+                yi,
+                f"{v:.3f}",
+                va="center",
+                fontsize=8.5,
+                color="#333333",
+            )
         ax.set_title(title, fontsize=11, loc="left", color="#333333")
         ax.set_xlim(*xlim)
         ax.grid(axis="x", color="#eeeeee", zorder=0)
@@ -78,7 +84,10 @@ def fig_main_results() -> None:
     axes[0].set_yticks(y, [r[0] for r in data])
     fig.suptitle(
         "Detection on the adversarial RAID grid (33,396 texts: 11 generators \u00d7 8 domains \u00d7 12 attack conditions)",
-        fontsize=10.5, x=0.01, ha="left", color="#333333",
+        fontsize=10.5,
+        x=0.01,
+        ha="left",
+        color="#333333",
     )
     fig.tight_layout(rect=(0, 0, 1, 0.94))
     fig.savefig(OUT / "main_results.svg", bbox_inches="tight")
@@ -87,9 +96,18 @@ def fig_main_results() -> None:
 
 
 ATTACK_ORDER = [
-    "none", "paraphrase", "synonym", "homoglyph", "zero_width_space", "whitespace",
-    "upper_lower", "article_deletion", "insert_paragraphs", "perplexity_misspelling",
-    "alternative_spelling", "number",
+    "none",
+    "paraphrase",
+    "synonym",
+    "homoglyph",
+    "zero_width_space",
+    "whitespace",
+    "upper_lower",
+    "article_deletion",
+    "insert_paragraphs",
+    "perplexity_misspelling",
+    "alternative_spelling",
+    "number",
 ]
 ATTACK_LABELS = [a.replace("_", " ") for a in ATTACK_ORDER]
 
@@ -115,11 +133,20 @@ def fig_attack_heatmap() -> None:
     for i in range(grid.shape[0]):
         for j in range(grid.shape[1]):
             v = grid[i, j]
-            ax.text(j, i, f"{v:.2f}".lstrip("0"), ha="center", va="center",
-                    fontsize=7.5, color="white" if v < 0.45 else "black")
+            ax.text(
+                j,
+                i,
+                f"{v:.2f}".lstrip("0"),
+                ha="center",
+                va="center",
+                fontsize=7.5,
+                color="white" if v < 0.45 else "black",
+            )
     ax.set_title(
         "TPR @ 5% FPR by attack — encoders and statistical scorers break in opposite places",
-        fontsize=10.5, loc="left", color="#333333",
+        fontsize=10.5,
+        loc="left",
+        color="#333333",
     )
     fig.colorbar(im, ax=ax, shrink=0.85, label="TPR @ 5% FPR")
     for spine in ax.spines.values():
@@ -137,9 +164,7 @@ def fig_defense() -> None:
     ]
     # one shared row order (mean clean TPR across both panels) — with sharey, a
     # per-panel order would let the second panel's labels overwrite the first's
-    cleans = {
-        run: load(run, "raid_eval.json")["metrics"]["slices"]["attack"] for _, run in panels
-    }
+    cleans = {run: load(run, "raid_eval.json")["metrics"]["slices"]["attack"] for _, run in panels}
     order = sorted(
         ATTACK_ORDER,
         key=lambda a: np.mean([cleans[r][a]["tpr_at_fpr_0.05"] for _, r in panels]),
@@ -163,7 +188,10 @@ def fig_defense() -> None:
     axes[0].legend(loc="upper left", frameon=False, fontsize=9)
     fig.suptitle(
         "Unicode input normalization restores the character-level attacks and costs nothing elsewhere",
-        fontsize=10.5, x=0.01, ha="left", color="#333333",
+        fontsize=10.5,
+        x=0.01,
+        ha="left",
+        color="#333333",
     )
     fig.tight_layout(rect=(0, 0, 1, 0.93))
     fig.savefig(OUT / "defense_dumbbell.svg", bbox_inches="tight")

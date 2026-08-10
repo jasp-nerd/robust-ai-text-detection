@@ -41,9 +41,9 @@ def main() -> None:
     else:  # positional alignment (same eval parquet + same seed => same order)
         merged = a.with_columns(pl.Series("score_b", b["score"]))
 
-    ranks = (
-        rankdata(merged["score"].to_numpy()) + rankdata(merged["score_b"].to_numpy())
-    ) / (2 * len(merged))
+    ranks = (rankdata(merged["score"].to_numpy()) + rankdata(merged["score_b"].to_numpy())) / (
+        2 * len(merged)
+    )
     scored = merged.drop("score", "score_b").with_columns(pl.Series("score", ranks))
 
     result = {

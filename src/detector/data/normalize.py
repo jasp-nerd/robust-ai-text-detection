@@ -15,21 +15,56 @@ import unicodedata
 
 # Zero-width and invisible formatting characters (the RAID zero_width_space attack
 # inserts U+200B; the rest are close cousins worth stripping).
-_INVISIBLE = dict.fromkeys(
-    [0x200B, 0x200C, 0x200D, 0x200E, 0x200F, 0x2060, 0xFEFF, 0x00AD]
-)
+_INVISIBLE = dict.fromkeys([0x200B, 0x200C, 0x200D, 0x200E, 0x200F, 0x2060, 0xFEFF, 0x00AD])
 
 # Common Cyrillic/Greek homoglyphs of Latin letters (the high-frequency subset used by
 # homoglyph attacks; intentionally small and auditable rather than exhaustive).
 _CONFUSABLES = str.maketrans(
     {
-        "а": "a", "е": "e", "о": "o", "р": "p", "с": "c", "х": "x", "у": "y",
-        "і": "i", "ѕ": "s", "ј": "j", "ԁ": "d", "һ": "h", "ո": "n", "ν": "v",
-        "А": "A", "В": "B", "Е": "E", "К": "K", "М": "M", "Н": "H", "О": "O",
-        "Р": "P", "С": "C", "Т": "T", "Х": "X", "Ѕ": "S", "І": "I", "Ј": "J",
-        "Α": "A", "Β": "B", "Ε": "E", "Ζ": "Z", "Η": "H", "Ι": "I", "Κ": "K",
-        "Μ": "M", "Ν": "N", "Ο": "O", "Ρ": "P", "Τ": "T", "Υ": "Y", "Χ": "X",
-        "ο": "o", "α": "a",
+        "а": "a",
+        "е": "e",
+        "о": "o",
+        "р": "p",
+        "с": "c",
+        "х": "x",
+        "у": "y",
+        "і": "i",
+        "ѕ": "s",
+        "ј": "j",
+        "ԁ": "d",
+        "һ": "h",
+        "ո": "n",
+        "ν": "v",
+        "А": "A",
+        "В": "B",
+        "Е": "E",
+        "К": "K",
+        "М": "M",
+        "Н": "H",
+        "О": "O",
+        "Р": "P",
+        "С": "C",
+        "Т": "T",
+        "Х": "X",
+        "Ѕ": "S",
+        "І": "I",
+        "Ј": "J",
+        "Α": "A",
+        "Β": "B",
+        "Ε": "E",
+        "Ζ": "Z",
+        "Η": "H",
+        "Ι": "I",
+        "Κ": "K",
+        "Μ": "M",
+        "Ν": "N",
+        "Ο": "O",
+        "Ρ": "P",
+        "Τ": "T",
+        "Υ": "Y",
+        "Χ": "X",
+        "ο": "o",
+        "α": "a",
     }
 )
 

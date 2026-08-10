@@ -1,0 +1,1414 @@
+{
+  "run": "modernbert-mix1",
+  "config": {
+    "name": "modernbert-mix1",
+    "seed": 0,
+    "model": {
+      "type": "encoder",
+      "model_name": "answerdotai/ModernBERT-base",
+      "max_tokens": 512,
+      "batch_size": 16,
+      "grad_accum": 2,
+      "epochs": 1,
+      "lr": 3e-05
+    },
+    "train": {
+      "dataset": "mix1",
+      "split": "train",
+      "filter_artifacts": true
+    },
+    "eval": [
+      {
+        "dataset": "raid",
+        "split": "eval",
+        "save_scores": true
+      },
+      {
+        "dataset": "raid",
+        "split": "eval",
+        "normalize_unicode": true,
+        "save_scores": true
+      },
+      {
+        "dataset": "mage",
+        "split": "test"
+      },
+      {
+        "dataset": "hc3",
+        "split": "test",
+        "sample": 8000
+      }
+    ]
+  },
+  "git_commit": "0d6ecb2",
+  "train_rows": 369603,
+  "train_seconds": 8851.4,
+  "eval": "mage/test",
+  "n_eval": 60743,
+  "metrics": {
+    "overall": {
+      "auroc": 0.9825065222422746,
+      "tpr_at_fpr_0.05": 0.9333945796968305,
+      "tpr_at_fpr_0.01": 0.8481199553776495,
+      "n_machine": 30478.0,
+      "n_human": 30265.0
+    },
+    "slices": {
+      "generator": {
+        "13B": {
+          "auroc": 0.9924551605743469,
+          "tpr_at_fpr_0.05": 0.9576086956521739,
+          "tpr_at_fpr_0.01": 0.8891304347826087,
+          "n_machine": 920.0,
+          "n_human": 30265.0
+        },
+        "30B": {
+          "auroc": 0.9865971538143764,
+          "tpr_at_fpr_0.05": 0.9391675560298826,
+          "tpr_at_fpr_0.01": 0.847385272145144,
+          "n_machine": 937.0,
+          "n_human": 30265.0
+        },
+        "65B": {
+          "auroc": 0.9872998903947034,
+          "tpr_at_fpr_0.05": 0.9419354838709677,
+          "tpr_at_fpr_0.01": 0.8387096774193549,
+          "n_machine": 930.0,
+          "n_human": 30265.0
+        },
+        "7B": {
+          "auroc": 0.9935038972285083,
+          "tpr_at_fpr_0.05": 0.9674972914409534,
+          "tpr_at_fpr_0.01": 0.9187432286023836,
+          "n_machine": 923.0,
+          "n_human": 30265.0
+        },
+        "GLM130B": {
+          "auroc": 0.9909059923522845,
+          "tpr_at_fpr_0.05": 0.9466811751904244,
+          "tpr_at_fpr_0.01": 0.8737758433079434,
+          "n_machine": 919.0,
+          "n_human": 30265.0
+        },
+        "bloom_7b": {
+          "auroc": 0.9977530470094809,
+          "tpr_at_fpr_0.05": 0.988479262672811,
+          "tpr_at_fpr_0.01": 0.967741935483871,
+          "n_machine": 868.0,
+          "n_human": 30265.0
+        },
+        "flan_t5_base": {
+          "auroc": 0.9802942475645919,
+          "tpr_at_fpr_0.05": 0.902542372881356,
+          "tpr_at_fpr_0.01": 0.7129237288135594,
+          "n_machine": 944.0,
+          "n_human": 30265.0
+        },
+        "flan_t5_large": {
+          "auroc": 0.9777860811062564,
+          "tpr_at_fpr_0.05": 0.8936170212765957,
+          "tpr_at_fpr_0.01": 0.7170212765957447,
+          "n_machine": 940.0,
+          "n_human": 30265.0
+        },
+        "flan_t5_small": {
+          "auroc": 0.9818319082723497,
+          "tpr_at_fpr_0.05": 0.9098712446351931,
+          "tpr_at_fpr_0.01": 0.7349785407725322,
+          "n_machine": 932.0,
+          "n_human": 30265.0
+        },
+        "flan_t5_xl": {
+          "auroc": 0.9874905440538402,
+          "tpr_at_fpr_0.05": 0.9418859649122807,
+          "tpr_at_fpr_0.01": 0.8223684210526315,
+          "n_machine": 912.0,
+          "n_human": 30265.0
+        },
+        "flan_t5_xxl": {
+          "auroc": 0.9924480394569004,
+          "tpr_at_fpr_0.05": 0.9688841201716738,
+          "tpr_at_fpr_0.01": 0.9012875536480687,
+          "n_machine": 932.0,
+          "n_human": 30265.0
+        },
+        "gpt-3.5-trubo": {
+          "auroc": 0.9959141102826097,
+          "tpr_at_fpr_0.05": 0.9792402826855123,
+          "tpr_at_fpr_0.01": 0.9337455830388692,
+          "n_machine": 2264.0,
+          "n_human": 30265.0
+        },
+        "gpt_j": {
+          "auroc": 0.9988444592451716,
+          "tpr_at_fpr_0.05": 0.994750656167979,
+          "tpr_at_fpr_0.01": 0.9881889763779528,
+          "n_machine": 762.0,
+          "n_human": 30265.0
+        },
+        "gpt_neox": {
+          "auroc": 0.9989042866444446,
+          "tpr_at_fpr_0.05": 0.9955882352941177,
+          "tpr_at_fpr_0.01": 0.9882352941176471,
+          "n_machine": 680.0,
+          "n_human": 30265.0
+        },
+        "opt_1.3b": {
+          "auroc": 0.9940955844518791,
+          "tpr_at_fpr_0.05": 0.9669603524229075,
+          "tpr_at_fpr_0.01": 0.9196035242290749,
+          "n_machine": 908.0,
+          "n_human": 30265.0
+        },
+        "opt_125m": {
+          "auroc": 0.9923350509177957,
+          "tpr_at_fpr_0.05": 0.9559819413092551,
+          "tpr_at_fpr_0.01": 0.8656884875846501,
+          "n_machine": 886.0,
+          "n_human": 30265.0
+        },
+        "opt_13b": {
+          "auroc": 0.9974435649081606,
+          "tpr_at_fpr_0.05": 0.9851301115241635,
+          "tpr_at_fpr_0.01": 0.9504337050805453,
+          "n_machine": 807.0,
+          "n_human": 30265.0
+        },
+        "opt_2.7b": {
+          "auroc": 0.9965361834318496,
+          "tpr_at_fpr_0.05": 0.9844617092119867,
+          "tpr_at_fpr_0.01": 0.9489456159822419,
+          "n_machine": 901.0,
+          "n_human": 30265.0
+        },
+        "opt_30b": {
+          "auroc": 0.9968086054827002,
+          "tpr_at_fpr_0.05": 0.9845814977973568,
+          "tpr_at_fpr_0.01": 0.9526431718061674,
+          "n_machine": 908.0,
+          "n_human": 30265.0
+        },
+        "opt_350m": {
+          "auroc": 0.9944113491099502,
+          "tpr_at_fpr_0.05": 0.9762979683972912,
+          "tpr_at_fpr_0.01": 0.9209932279909706,
+          "n_machine": 886.0,
+          "n_human": 30265.0
+        },
+        "opt_6.7b": {
+          "auroc": 0.9939287236633215,
+          "tpr_at_fpr_0.05": 0.9740406320541761,
+          "tpr_at_fpr_0.01": 0.9153498871331829,
+          "n_machine": 886.0,
+          "n_human": 30265.0
+        },
+        "opt_iml_30b": {
+          "auroc": 0.993767407078184,
+          "tpr_at_fpr_0.05": 0.9701327433628318,
+          "tpr_at_fpr_0.01": 0.9292035398230089,
+          "n_machine": 904.0,
+          "n_human": 30265.0
+        },
+        "opt_iml_max_1.3b": {
+          "auroc": 0.9921923655656532,
+          "tpr_at_fpr_0.05": 0.9708423326133909,
+          "tpr_at_fpr_0.01": 0.8606911447084233,
+          "n_machine": 926.0,
+          "n_human": 30265.0
+        },
+        "t0_11b": {
+          "auroc": 0.9946894270677047,
+          "tpr_at_fpr_0.05": 0.981859410430839,
+          "tpr_at_fpr_0.01": 0.8945578231292517,
+          "n_machine": 882.0,
+          "n_human": 30265.0
+        },
+        "t0_3b": {
+          "auroc": 0.9916616371573898,
+          "tpr_at_fpr_0.05": 0.9650053022269353,
+          "tpr_at_fpr_0.01": 0.8748674443266172,
+          "n_machine": 943.0,
+          "n_human": 30265.0
+        },
+        "text-davinci-002": {
+          "auroc": 0.985281838384592,
+          "tpr_at_fpr_0.05": 0.9294930875576037,
+          "tpr_at_fpr_0.01": 0.7921658986175115,
+          "n_machine": 2170.0,
+          "n_human": 30265.0
+        },
+        "text-davinci-003": {
+          "auroc": 0.9910416172840394,
+          "tpr_at_fpr_0.05": 0.9519927536231884,
+          "tpr_at_fpr_0.01": 0.876358695652174,
+          "n_machine": 2208.0,
+          "n_human": 30265.0
+        },
+        "unknown": {
+          "auroc": 0.8782840740128862,
+          "tpr_at_fpr_0.05": 0.64,
+          "tpr_at_fpr_0.01": 0.49333333333333335,
+          "n_machine": 2400.0,
+          "n_human": 30265.0
+        }
+      },
+      "domain": {
+        "cmv": {
+          "auroc": 0.9987007423430868,
+          "tpr_at_fpr_0.05": 0.9964200477326969,
+          "tpr_at_fpr_0.01": 0.9685759745425616,
+          "n_machine": 2514.0,
+          "n_human": 2403.0
+        },
+        "cnn_gpt4": {
+          "auroc": 0.9752621014373039,
+          "tpr_at_fpr_0.05": 0.9,
+          "tpr_at_fpr_0.01": 0.835,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "cnn_gpt4_para": {
+          "auroc": 0.8749195440277548,
+          "tpr_at_fpr_0.05": 0.55,
+          "tpr_at_fpr_0.01": 0.25,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "cnn_human_para": {
+          "auroc": 0.756678671733025,
+          "tpr_at_fpr_0.05": 0.245,
+          "tpr_at_fpr_0.01": 0.065,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "dialogsum_gpt4": {
+          "auroc": 0.9958177763092682,
+          "tpr_at_fpr_0.05": 0.98,
+          "tpr_at_fpr_0.01": 0.915,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "dialogsum_gpt4_para": {
+          "auroc": 0.9866286139104576,
+          "tpr_at_fpr_0.05": 0.935,
+          "tpr_at_fpr_0.01": 0.73,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "dialogsum_human_para": {
+          "auroc": 0.909483561870147,
+          "tpr_at_fpr_0.05": 0.57,
+          "tpr_at_fpr_0.01": 0.24,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "eli5": {
+          "auroc": 0.9896712623296461,
+          "tpr_at_fpr_0.05": 0.936150234741784,
+          "tpr_at_fpr_0.01": 0.8231611893583725,
+          "n_machine": 3195.0,
+          "n_human": 3156.0
+        },
+        "hswag": {
+          "auroc": 0.9904220517725857,
+          "tpr_at_fpr_0.05": 0.9633387888707038,
+          "tpr_at_fpr_0.01": 0.9230769230769231,
+          "n_machine": 3055.0,
+          "n_human": 3292.0
+        },
+        "imdb_gpt4": {
+          "auroc": 0.9985521229142573,
+          "tpr_at_fpr_0.05": 0.995,
+          "tpr_at_fpr_0.01": 0.97,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "imdb_gpt4_para": {
+          "auroc": 0.9880112340987941,
+          "tpr_at_fpr_0.05": 0.955,
+          "tpr_at_fpr_0.01": 0.815,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "imdb_human_para": {
+          "auroc": 0.6585721130018172,
+          "tpr_at_fpr_0.05": 0.085,
+          "tpr_at_fpr_0.01": 0.015,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "pubmed_gpt4": {
+          "auroc": 0.9878879068230629,
+          "tpr_at_fpr_0.05": 0.94,
+          "tpr_at_fpr_0.01": 0.85,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "pubmed_gpt4_para": {
+          "auroc": 0.8650077647447547,
+          "tpr_at_fpr_0.05": 0.48,
+          "tpr_at_fpr_0.01": 0.22,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "pubmed_human_para": {
+          "auroc": 0.5425874772839914,
+          "tpr_at_fpr_0.05": 0.045,
+          "tpr_at_fpr_0.01": 0.015,
+          "n_machine": 200.0,
+          "n_human": 30265.0
+        },
+        "roct": {
+          "auroc": 0.9903934160005942,
+          "tpr_at_fpr_0.05": 0.9667398807656102,
+          "tpr_at_fpr_0.01": 0.9256353937872608,
+          "n_machine": 3187.0,
+          "n_human": 3275.0
+        },
+        "sci_gen": {
+          "auroc": 0.996852987849897,
+          "tpr_at_fpr_0.05": 0.988005330964016,
+          "tpr_at_fpr_0.01": 0.9364726788094181,
+          "n_machine": 2251.0,
+          "n_human": 2538.0
+        },
+        "squad": {
+          "auroc": 0.9949143509998774,
+          "tpr_at_fpr_0.05": 0.9727564102564102,
+          "tpr_at_fpr_0.01": 0.9146634615384616,
+          "n_machine": 2496.0,
+          "n_human": 2508.0
+        },
+        "tldr": {
+          "auroc": 0.9917295455756994,
+          "tpr_at_fpr_0.05": 0.954954954954955,
+          "tpr_at_fpr_0.01": 0.895986895986896,
+          "n_machine": 2442.0,
+          "n_human": 2535.0
+        },
+        "wp": {
+          "auroc": 0.9987916037781167,
+          "tpr_at_fpr_0.05": 0.9990436722983742,
+          "tpr_at_fpr_0.01": 0.9875677398788651,
+          "n_machine": 3137.0,
+          "n_human": 3099.0
+        },
+        "xsum": {
+          "auroc": 0.9953275717170704,
+          "tpr_at_fpr_0.05": 0.9738783036263061,
+          "tpr_at_fpr_0.01": 0.9173325138291334,
+          "n_machine": 3254.0,
+          "n_human": 3283.0
+        },
+        "yelp": {
+          "auroc": 0.9870182647671735,
+          "tpr_at_fpr_0.05": 0.9214762465645858,
+          "tpr_at_fpr_0.01": 0.8354927365528072,
+          "n_machine": 2547.0,
+          "n_human": 2652.0
+        }
+      },
+      "attack": {
+        "none": {
+          "auroc": 0.9825065222422746,
+          "tpr_at_fpr_0.05": 0.9333945796968305,
+          "tpr_at_fpr_0.01": 0.8481199553776495,
+          "n_machine": 30478.0,
+          "n_human": 30265.0
+        }
+      }
+    }
+  },
+  "seen_vs_unseen": {
+    "seen": {
+      "auroc": 0.9914150583114582,
+      "tpr_at_fpr_0.05": 0.9584728256998362,
+      "tpr_at_fpr_0.01": 0.8784457582448892,
+      "n_machine": 28078.0,
+      "n_human": 30265.0
+    },
+    "unseen": null
+  },
+  "calibration_transfer": [
+    {
+      "calibration_domain": "cmv",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05035372451102788,
+      "tpr": 0.9964200477326969
+    },
+    {
+      "calibration_domain": "cmv",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.10329531051964512,
+      "tpr": 0.9793427230046948
+    },
+    {
+      "calibration_domain": "cmv",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.2399756986634265,
+      "tpr": 0.9878887070376432
+    },
+    {
+      "calibration_domain": "cmv",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.21770992366412215,
+      "tpr": 0.9849388139315971
+    },
+    {
+      "calibration_domain": "cmv",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.10835303388494878,
+      "tpr": 0.9946690359840071
+    },
+    {
+      "calibration_domain": "cmv",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.08253588516746412,
+      "tpr": 0.984375
+    },
+    {
+      "calibration_domain": "cmv",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.23629191321499013,
+      "tpr": 0.9934479934479934
+    },
+    {
+      "calibration_domain": "cmv",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.025814778960955145,
+      "tpr": 0.9971310168951227
+    },
+    {
+      "calibration_domain": "cmv",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.14803533353639964,
+      "tpr": 0.9960049170251998
+    },
+    {
+      "calibration_domain": "cmv",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06636500754147813,
+      "tpr": 0.9414998036906164
+    },
+    {
+      "calibration_domain": "cnn",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.006242197253433208,
+      "tpr": 0.9498806682577565
+    },
+    {
+      "calibration_domain": "cnn",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.011406844106463879,
+      "tpr": 0.8356807511737089
+    },
+    {
+      "calibration_domain": "cnn",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.012150668286755772,
+      "tpr": 0.9286415711947626
+    },
+    {
+      "calibration_domain": "cnn",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.01099236641221374,
+      "tpr": 0.9319108879824286
+    },
+    {
+      "calibration_domain": "cnn",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.013396375098502758,
+      "tpr": 0.9431363838294091
+    },
+    {
+      "calibration_domain": "cnn",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.005980861244019139,
+      "tpr": 0.8910256410256411
+    },
+    {
+      "calibration_domain": "cnn",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.024063116370808678,
+      "tpr": 0.9279279279279279
+    },
+    {
+      "calibration_domain": "cnn",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.006453694740238786,
+      "tpr": 0.9687599617468919
+    },
+    {
+      "calibration_domain": "cnn",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.016448370392933294,
+      "tpr": 0.9366933005531654
+    },
+    {
+      "calibration_domain": "cnn",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0026395173453996985,
+      "tpr": 0.7636435021594032
+    },
+    {
+      "calibration_domain": "dialogsum",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0,
+      "tpr": 0.6921241050119332
+    },
+    {
+      "calibration_domain": "dialogsum",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0006337135614702154,
+      "tpr": 0.5035993740219092
+    },
+    {
+      "calibration_domain": "dialogsum",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0,
+      "tpr": 0.6998363338788871
+    },
+    {
+      "calibration_domain": "dialogsum",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0012213740458015267,
+      "tpr": 0.7474113586444933
+    },
+    {
+      "calibration_domain": "dialogsum",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0003940110323089047,
+      "tpr": 0.6903598400710795
+    },
+    {
+      "calibration_domain": "dialogsum",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.00039872408293460925,
+      "tpr": 0.6153846153846154
+    },
+    {
+      "calibration_domain": "dialogsum",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0,
+      "tpr": 0.7125307125307125
+    },
+    {
+      "calibration_domain": "dialogsum",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.001936108422071636,
+      "tpr": 0.7704813516098183
+    },
+    {
+      "calibration_domain": "dialogsum",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0003045994517209869,
+      "tpr": 0.6358328211432084
+    },
+    {
+      "calibration_domain": "dialogsum",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0,
+      "tpr": 0.45779348252846486
+    },
+    {
+      "calibration_domain": "eli5",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.02247191011235955,
+      "tpr": 0.9876690533015116
+    },
+    {
+      "calibration_domain": "eli5",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.050063371356147024,
+      "tpr": 0.936150234741784
+    },
+    {
+      "calibration_domain": "eli5",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06834750911300122,
+      "tpr": 0.969558101472995
+    },
+    {
+      "calibration_domain": "eli5",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.044580152671755725,
+      "tpr": 0.9661123313460935
+    },
+    {
+      "calibration_domain": "eli5",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04334121355397951,
+      "tpr": 0.9844513549533541
+    },
+    {
+      "calibration_domain": "eli5",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03189792663476874,
+      "tpr": 0.9611378205128205
+    },
+    {
+      "calibration_domain": "eli5",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.09506903353057199,
+      "tpr": 0.9750204750204751
+    },
+    {
+      "calibration_domain": "eli5",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.011293965795417877,
+      "tpr": 0.9894803952821166
+    },
+    {
+      "calibration_domain": "eli5",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.07066707279926897,
+      "tpr": 0.9837123540258144
+    },
+    {
+      "calibration_domain": "eli5",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0196078431372549,
+      "tpr": 0.8743619945033373
+    },
+    {
+      "calibration_domain": "hswag",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0178942987931752,
+      "tpr": 0.9824980111376292
+    },
+    {
+      "calibration_domain": "hswag",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.038656527249683145,
+      "tpr": 0.9161189358372457
+    },
+    {
+      "calibration_domain": "hswag",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05012150668286756,
+      "tpr": 0.9633387888707038
+    },
+    {
+      "calibration_domain": "hswag",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.030534351145038167,
+      "tpr": 0.9582679636021336
+    },
+    {
+      "calibration_domain": "hswag",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.035066981875492516,
+      "tpr": 0.9804531319413594
+    },
+    {
+      "calibration_domain": "hswag",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.024720893141945772,
+      "tpr": 0.9479166666666666
+    },
+    {
+      "calibration_domain": "hswag",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.07021696252465483,
+      "tpr": 0.9680589680589681
+    },
+    {
+      "calibration_domain": "hswag",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.010325911584382058,
+      "tpr": 0.988205291679949
+    },
+    {
+      "calibration_domain": "hswag",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05665549802010356,
+      "tpr": 0.9775660725261217
+    },
+    {
+      "calibration_domain": "hswag",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.01282051282051282,
+      "tpr": 0.8531605810757754
+    },
+    {
+      "calibration_domain": "imdb",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.025384935497295046,
+      "tpr": 0.9916467780429594
+    },
+    {
+      "calibration_domain": "imdb",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05671736375158428,
+      "tpr": 0.9446009389671362
+    },
+    {
+      "calibration_domain": "imdb",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.08596597812879708,
+      "tpr": 0.9734860883797054
+    },
+    {
+      "calibration_domain": "imdb",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.061374045801526715,
+      "tpr": 0.9686225290241607
+    },
+    {
+      "calibration_domain": "imdb",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05003940110323089,
+      "tpr": 0.988005330964016
+    },
+    {
+      "calibration_domain": "imdb",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.040271132376395534,
+      "tpr": 0.9675480769230769
+    },
+    {
+      "calibration_domain": "imdb",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.11321499013806706,
+      "tpr": 0.9774774774774775
+    },
+    {
+      "calibration_domain": "imdb",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.012584704743465635,
+      "tpr": 0.9917118265859101
+    },
+    {
+      "calibration_domain": "imdb",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.08041425525434054,
+      "tpr": 0.9861708666256914
+    },
+    {
+      "calibration_domain": "imdb",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.023001508295625944,
+      "tpr": 0.8857479387514723
+    },
+    {
+      "calibration_domain": "pubmed",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.014148980441115273,
+      "tpr": 0.9757358790771679
+    },
+    {
+      "calibration_domain": "pubmed",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.027566539923954372,
+      "tpr": 0.888262910798122
+    },
+    {
+      "calibration_domain": "pubmed",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.030984204131227218,
+      "tpr": 0.9551554828150572
+    },
+    {
+      "calibration_domain": "pubmed",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0183206106870229,
+      "tpr": 0.9504235958581738
+    },
+    {
+      "calibration_domain": "pubmed",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.022852639873916468,
+      "tpr": 0.9706796979120391
+    },
+    {
+      "calibration_domain": "pubmed",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.013955342902711323,
+      "tpr": 0.9306891025641025
+    },
+    {
+      "calibration_domain": "pubmed",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04970414201183432,
+      "tpr": 0.954954954954955
+    },
+    {
+      "calibration_domain": "pubmed",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.008389803162310423,
+      "tpr": 0.9843799808734459
+    },
+    {
+      "calibration_domain": "pubmed",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0395979287237283,
+      "tpr": 0.9671173939766441
+    },
+    {
+      "calibration_domain": "pubmed",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.007918552036199095,
+      "tpr": 0.8193953670985473
+    },
+    {
+      "calibration_domain": "roct",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.024136496046608405,
+      "tpr": 0.9888623707239459
+    },
+    {
+      "calibration_domain": "roct",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.051330798479087454,
+      "tpr": 0.9389671361502347
+    },
+    {
+      "calibration_domain": "roct",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.07351154313487242,
+      "tpr": 0.9708674304418985
+    },
+    {
+      "calibration_domain": "roct",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.050076335877862595,
+      "tpr": 0.9667398807656102
+    },
+    {
+      "calibration_domain": "roct",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.046493301812450746,
+      "tpr": 0.9866725899600177
+    },
+    {
+      "calibration_domain": "roct",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.034688995215311005,
+      "tpr": 0.9627403846153846
+    },
+    {
+      "calibration_domain": "roct",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.09980276134122287,
+      "tpr": 0.9754299754299754
+    },
+    {
+      "calibration_domain": "roct",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.011939335269441756,
+      "tpr": 0.9897991711826586
+    },
+    {
+      "calibration_domain": "roct",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0743222662199208,
+      "tpr": 0.9843269821757836
+    },
+    {
+      "calibration_domain": "roct",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.021116138763197588,
+      "tpr": 0.878288182175108
+    },
+    {
+      "calibration_domain": "sci_gen",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.024968789013732832,
+      "tpr": 0.9904534606205251
+    },
+    {
+      "calibration_domain": "sci_gen",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.056400506970849175,
+      "tpr": 0.9430359937402191
+    },
+    {
+      "calibration_domain": "sci_gen",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.08383961117861483,
+      "tpr": 0.9734860883797054
+    },
+    {
+      "calibration_domain": "sci_gen",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0583206106870229,
+      "tpr": 0.9679949796046439
+    },
+    {
+      "calibration_domain": "sci_gen",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05003940110323089,
+      "tpr": 0.988005330964016
+    },
+    {
+      "calibration_domain": "sci_gen",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03907496012759171,
+      "tpr": 0.9667467948717948
+    },
+    {
+      "calibration_domain": "sci_gen",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.11124260355029586,
+      "tpr": 0.9766584766584766
+    },
+    {
+      "calibration_domain": "sci_gen",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.012584704743465635,
+      "tpr": 0.9917118265859101
+    },
+    {
+      "calibration_domain": "sci_gen",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0791958574474566,
+      "tpr": 0.9855562384757222
+    },
+    {
+      "calibration_domain": "sci_gen",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.02262443438914027,
+      "tpr": 0.8833922261484098
+    },
+    {
+      "calibration_domain": "squad",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.029546400332917187,
+      "tpr": 0.9920445505171042
+    },
+    {
+      "calibration_domain": "squad",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06463878326996197,
+      "tpr": 0.9539906103286385
+    },
+    {
+      "calibration_domain": "squad",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.10510328068043742,
+      "tpr": 0.9764320785597381
+    },
+    {
+      "calibration_domain": "squad",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.08396946564885496,
+      "tpr": 0.9730153749607782
+    },
+    {
+      "calibration_domain": "squad",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06028368794326241,
+      "tpr": 0.9888938249666814
+    },
+    {
+      "calibration_domain": "squad",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.050239234449760764,
+      "tpr": 0.9727564102564102
+    },
+    {
+      "calibration_domain": "squad",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.1349112426035503,
+      "tpr": 0.9815724815724816
+    },
+    {
+      "calibration_domain": "squad",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.015811552113585026,
+      "tpr": 0.9936244819891616
+    },
+    {
+      "calibration_domain": "squad",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.09564422784038988,
+      "tpr": 0.9892440073755377
+    },
+    {
+      "calibration_domain": "squad",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.029788838612368026,
+      "tpr": 0.8979191205339615
+    },
+    {
+      "calibration_domain": "tldr",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.014148980441115273,
+      "tpr": 0.9757358790771679
+    },
+    {
+      "calibration_domain": "tldr",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.027566539923954372,
+      "tpr": 0.8885758998435055
+    },
+    {
+      "calibration_domain": "tldr",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.031287970838396115,
+      "tpr": 0.9551554828150572
+    },
+    {
+      "calibration_domain": "tldr",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0183206106870229,
+      "tpr": 0.9504235958581738
+    },
+    {
+      "calibration_domain": "tldr",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.022852639873916468,
+      "tpr": 0.9706796979120391
+    },
+    {
+      "calibration_domain": "tldr",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.013955342902711323,
+      "tpr": 0.9306891025641025
+    },
+    {
+      "calibration_domain": "tldr",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05009861932938856,
+      "tpr": 0.954954954954955
+    },
+    {
+      "calibration_domain": "tldr",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.008389803162310423,
+      "tpr": 0.9843799808734459
+    },
+    {
+      "calibration_domain": "tldr",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0395979287237283,
+      "tpr": 0.9671173939766441
+    },
+    {
+      "calibration_domain": "tldr",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.007918552036199095,
+      "tpr": 0.8197879858657244
+    },
+    {
+      "calibration_domain": "wp",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.08739076154806492,
+      "tpr": 0.9980111376292761
+    },
+    {
+      "calibration_domain": "wp",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.1761723700887199,
+      "tpr": 0.9912363067292644
+    },
+    {
+      "calibration_domain": "wp",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.5829283110571082,
+      "tpr": 0.9970540098199673
+    },
+    {
+      "calibration_domain": "wp",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.5709923664122137,
+      "tpr": 0.9974898023219329
+    },
+    {
+      "calibration_domain": "wp",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.19897557131599686,
+      "tpr": 0.9995557529986673
+    },
+    {
+      "calibration_domain": "wp",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.1634768740031898,
+      "tpr": 0.9963942307692307
+    },
+    {
+      "calibration_domain": "wp",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.4236686390532544,
+      "tpr": 0.9995904995904996
+    },
+    {
+      "calibration_domain": "wp",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0500161342368506,
+      "tpr": 0.9990436722983742
+    },
+    {
+      "calibration_domain": "wp",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.26561072190070056,
+      "tpr": 0.9987707437000615
+    },
+    {
+      "calibration_domain": "wp",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.15082956259426847,
+      "tpr": 0.978013349038084
+    },
+    {
+      "calibration_domain": "xsum",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.016645859342488557,
+      "tpr": 0.9797136038186157
+    },
+    {
+      "calibration_domain": "xsum",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.035487959442332066,
+      "tpr": 0.9086071987480439
+    },
+    {
+      "calibration_domain": "xsum",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04191980558930741,
+      "tpr": 0.9617021276595744
+    },
+    {
+      "calibration_domain": "xsum",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.024732824427480916,
+      "tpr": 0.9557577659240665
+    },
+    {
+      "calibration_domain": "xsum",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.029156816390858944,
+      "tpr": 0.9773434029320303
+    },
+    {
+      "calibration_domain": "xsum",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.019936204146730464,
+      "tpr": 0.9407051282051282
+    },
+    {
+      "calibration_domain": "xsum",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05917159763313609,
+      "tpr": 0.9635544635544635
+    },
+    {
+      "calibration_domain": "xsum",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0090351726363343,
+      "tpr": 0.9862926362766975
+    },
+    {
+      "calibration_domain": "xsum",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05025890953396284,
+      "tpr": 0.9738783036263061
+    },
+    {
+      "calibration_domain": "xsum",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.010935143288084464,
+      "tpr": 0.8386336866902238
+    },
+    {
+      "calibration_domain": "yelp",
+      "eval_domain": "cmv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03745318352059925,
+      "tpr": 0.9952267303102625
+    },
+    {
+      "calibration_domain": "yelp",
+      "eval_domain": "eli5",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0820659062103929,
+      "tpr": 0.9683881064162755
+    },
+    {
+      "calibration_domain": "yelp",
+      "eval_domain": "hswag",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.1649453219927096,
+      "tpr": 0.9826513911620295
+    },
+    {
+      "calibration_domain": "yelp",
+      "eval_domain": "roct",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.14259541984732824,
+      "tpr": 0.9789770944461876
+    },
+    {
+      "calibration_domain": "yelp",
+      "eval_domain": "sci_gen",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0847123719464145,
+      "tpr": 0.9928920479786761
+    },
+    {
+      "calibration_domain": "yelp",
+      "eval_domain": "squad",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06698564593301436,
+      "tpr": 0.9799679487179487
+    },
+    {
+      "calibration_domain": "yelp",
+      "eval_domain": "tldr",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.17909270216962525,
+      "tpr": 0.9905814905814906
+    },
+    {
+      "calibration_domain": "yelp",
+      "eval_domain": "wp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.020006453694740238,
+      "tpr": 0.9958559132929551
+    },
+    {
+      "calibration_domain": "yelp",
+      "eval_domain": "xsum",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.12153518123667377,
+      "tpr": 0.9929317762753535
+    },
+    {
+      "calibration_domain": "yelp",
+      "eval_domain": "yelp",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05015082956259427,
+      "tpr": 0.9214762465645858
+    }
+  ]
+}
