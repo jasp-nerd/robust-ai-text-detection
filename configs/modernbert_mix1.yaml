@@ -1,0 +1,31 @@
+# Phase 3d final experiment: ModernBERT-base on the MAGE+RAID mixture.
+# Tests the literature's top-ranked intervention (curated data mixing).
+# NOTE: RAID eval is semi-in-distribution for this model (see make_mixture.py);
+# HC3 is the only fully-OOD eval here.
+name: modernbert-mix1
+seed: 0
+model:
+  type: encoder
+  model_name: answerdotai/ModernBERT-base
+  max_tokens: 512
+  batch_size: 16
+  grad_accum: 2
+  epochs: 1
+  lr: 3.0e-5
+train:
+  dataset: mix1
+  split: train
+  filter_artifacts: true
+eval:
+  - dataset: raid
+    split: eval
+    save_scores: true
+  - dataset: raid
+    split: eval
+    normalize_unicode: true
+    save_scores: true
+  - dataset: mage
+    split: test
+  - dataset: hc3
+    split: test
+    sample: 8000
