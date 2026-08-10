@@ -1,0 +1,242 @@
+{
+  "run": "ensemble-rankavg",
+  "components": [
+    "results/runs/modernbert-defense/raid_eval_norm_scores.parquet",
+    "results/runs/fdg-neo-defense/raid_eval_norm_scores.parquet"
+  ],
+  "n_eval": 33396,
+  "metrics": {
+    "overall": {
+      "auroc": 0.9471536738525911,
+      "tpr_at_fpr_0.05": 0.7610984848484849,
+      "tpr_at_fpr_0.01": 0.5814772727272727,
+      "n_machine": 26400.0,
+      "n_human": 6996.0
+    },
+    "slices": {
+      "generator": {
+        "chatgpt": {
+          "auroc": 0.9785639115208691,
+          "tpr_at_fpr_0.05": 0.8925,
+          "tpr_at_fpr_0.01": 0.8025,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "cohere": {
+          "auroc": 0.9068466206880121,
+          "tpr_at_fpr_0.05": 0.5933333333333334,
+          "tpr_at_fpr_0.01": 0.39416666666666667,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "cohere-chat": {
+          "auroc": 0.9420748165618449,
+          "tpr_at_fpr_0.05": 0.7370833333333333,
+          "tpr_at_fpr_0.01": 0.59125,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "gpt2": {
+          "auroc": 0.9543716349818945,
+          "tpr_at_fpr_0.05": 0.7325,
+          "tpr_at_fpr_0.01": 0.5595833333333333,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "gpt3": {
+          "auroc": 0.9799102165523157,
+          "tpr_at_fpr_0.05": 0.8920833333333333,
+          "tpr_at_fpr_0.01": 0.7320833333333333,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "gpt4": {
+          "auroc": 0.8972611134934249,
+          "tpr_at_fpr_0.05": 0.6570833333333334,
+          "tpr_at_fpr_0.01": 0.5320833333333334,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "llama-chat": {
+          "auroc": 0.9763845709453021,
+          "tpr_at_fpr_0.05": 0.9020833333333333,
+          "tpr_at_fpr_0.01": 0.8175,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "mistral": {
+          "auroc": 0.928507837812083,
+          "tpr_at_fpr_0.05": 0.6475,
+          "tpr_at_fpr_0.01": 0.4370833333333333,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "mistral-chat": {
+          "auroc": 0.9720408983704975,
+          "tpr_at_fpr_0.05": 0.8579166666666667,
+          "tpr_at_fpr_0.01": 0.7266666666666667,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "mpt": {
+          "auroc": 0.9364185189155707,
+          "tpr_at_fpr_0.05": 0.725,
+          "tpr_at_fpr_0.01": 0.31083333333333335,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        },
+        "mpt-chat": {
+          "auroc": 0.9463102725366876,
+          "tpr_at_fpr_0.05": 0.735,
+          "tpr_at_fpr_0.01": 0.4925,
+          "n_machine": 2400.0,
+          "n_human": 6996.0
+        }
+      },
+      "domain": {
+        "abstracts": {
+          "auroc": 0.9627143097643098,
+          "tpr_at_fpr_0.05": 0.8663636363636363,
+          "tpr_at_fpr_0.01": 0.7184848484848485,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "books": {
+          "auroc": 0.9777092592592593,
+          "tpr_at_fpr_0.05": 0.8996969696969697,
+          "tpr_at_fpr_0.01": 0.8212121212121212,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "news": {
+          "auroc": 0.9554361952861953,
+          "tpr_at_fpr_0.05": 0.8284848484848485,
+          "tpr_at_fpr_0.01": 0.6439393939393939,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "poetry": {
+          "auroc": 0.9454191919191919,
+          "tpr_at_fpr_0.05": 0.7627272727272727,
+          "tpr_at_fpr_0.01": 0.5409090909090909,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "recipes": {
+          "auroc": 0.8988533670033669,
+          "tpr_at_fpr_0.05": 0.6439393939393939,
+          "tpr_at_fpr_0.01": 0.5545454545454546,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "reddit": {
+          "auroc": 0.9624038720538721,
+          "tpr_at_fpr_0.05": 0.8627272727272727,
+          "tpr_at_fpr_0.01": 0.6878787878787879,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        },
+        "reviews": {
+          "auroc": 0.9573208376872171,
+          "tpr_at_fpr_0.05": 0.7996969696969697,
+          "tpr_at_fpr_0.01": 0.6415151515151515,
+          "n_machine": 3300.0,
+          "n_human": 696.0
+        },
+        "wiki": {
+          "auroc": 0.962927441077441,
+          "tpr_at_fpr_0.05": 0.8545454545454545,
+          "tpr_at_fpr_0.01": 0.7081818181818181,
+          "n_machine": 3300.0,
+          "n_human": 900.0
+        }
+      },
+      "attack": {
+        "alternative_spelling": {
+          "auroc": 0.9644782083268362,
+          "tpr_at_fpr_0.05": 0.82,
+          "tpr_at_fpr_0.01": 0.6563636363636364,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "article_deletion": {
+          "auroc": 0.9356743138936536,
+          "tpr_at_fpr_0.05": 0.7363636363636363,
+          "tpr_at_fpr_0.01": 0.5545454545454546,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "homoglyph": {
+          "auroc": 0.9702261357139144,
+          "tpr_at_fpr_0.05": 0.8513636363636363,
+          "tpr_at_fpr_0.01": 0.685,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "insert_paragraphs": {
+          "auroc": 0.9638044791829097,
+          "tpr_at_fpr_0.05": 0.8245454545454546,
+          "tpr_at_fpr_0.01": 0.6622727272727272,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "none": {
+          "auroc": 0.9702111271375853,
+          "tpr_at_fpr_0.05": 0.8495454545454545,
+          "tpr_at_fpr_0.01": 0.6813636363636364,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "number": {
+          "auroc": 0.9603301561931492,
+          "tpr_at_fpr_0.05": 0.8009090909090909,
+          "tpr_at_fpr_0.01": 0.615,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "paraphrase": {
+          "auroc": 0.9470212848900671,
+          "tpr_at_fpr_0.05": 0.7363636363636363,
+          "tpr_at_fpr_0.01": 0.5290909090909091,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "perplexity_misspelling": {
+          "auroc": 0.9589547923488748,
+          "tpr_at_fpr_0.05": 0.7881818181818182,
+          "tpr_at_fpr_0.01": 0.6236363636363637,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "synonym": {
+          "auroc": 0.8641440563438849,
+          "tpr_at_fpr_0.05": 0.4968181818181818,
+          "tpr_at_fpr_0.01": 0.2822727272727273,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "upper_lower": {
+          "auroc": 0.9332238876760748,
+          "tpr_at_fpr_0.05": 0.6922727272727273,
+          "tpr_at_fpr_0.01": 0.48409090909090907,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "whitespace": {
+          "auroc": 0.931520121887832,
+          "tpr_at_fpr_0.05": 0.6945454545454546,
+          "tpr_at_fpr_0.01": 0.5227272727272727,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        },
+        "zero_width_space": {
+          "auroc": 0.9662555226363118,
+          "tpr_at_fpr_0.05": 0.8422727272727273,
+          "tpr_at_fpr_0.01": 0.6813636363636364,
+          "n_machine": 2200.0,
+          "n_human": 6996.0
+        }
+      }
+    }
+  }
+}
