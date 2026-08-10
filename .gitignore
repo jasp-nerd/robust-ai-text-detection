@@ -24,3 +24,6 @@ __pycache__/
 
 # gitignore model checkpoints inside results
 results/runs/*/model/
+
+# local Claude Code config/skills — not for the public repo
+.claude/
