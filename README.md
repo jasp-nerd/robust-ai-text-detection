@@ -107,6 +107,14 @@ The full table, and per-generator/domain/attack slices, regenerate with
    [shen2026rethinking] in our own strongest checkpoint. Our pre-registered caveat
    about the mixture's RAID numbers turned out to be the finding.
 
+8. No single supervised checkpoint is robust on every axis. A frontier probe (465
+   texts by Qwen3-4B-2507, a 2025 generator no training set contains, in RAID's
+   continuation format) completes a triangle of complementary collapses: the RAID-mix
+   model scores 0.985 TPR at 1% FPR there but 0.00 on M4GT; the MAGE-only model the
+   reverse (0.13 vs 0.67); zero-shot Fast-DetectGPT never ranks first and never
+   collapses (worst case 0.42 across all three corpora). Robustness is a profile,
+   not a number — which is the deepest argument for the ensemble in finding 2.
+
 ## Released models
 
 Two checkpoints are on the Hugging Face Hub, with cards stating metrics and limits:
