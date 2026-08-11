@@ -1,0 +1,446 @@
+{
+  "run": "fdg-neo-m4gt",
+  "config": {
+    "name": "fdg-neo-m4gt",
+    "seed": 0,
+    "model": {
+      "type": "fast_detect_gpt",
+      "scorer": "EleutherAI/gpt-neo-2.7B",
+      "max_tokens": 512
+    },
+    "train": null,
+    "eval": [
+      {
+        "dataset": "m4gt",
+        "split": "test",
+        "sample": 15000
+      }
+    ]
+  },
+  "git_commit": "5d2c392",
+  "train_rows": 0,
+  "train_seconds": 0.0,
+  "eval": "m4gt/test",
+  "n_eval": 15000,
+  "metrics": {
+    "overall": {
+      "auroc": 0.8454070695784592,
+      "tpr_at_fpr_0.05": 0.707276137822095,
+      "tpr_at_fpr_0.01": 0.6358969296080561,
+      "n_machine": 10129.0,
+      "n_human": 4871.0
+    },
+    "slices": {
+      "generator": {
+        "bloomz": {
+          "auroc": 0.4161134867257009,
+          "tpr_at_fpr_0.05": 0.08639863130881095,
+          "tpr_at_fpr_0.01": 0.04704875962360992,
+          "n_machine": 1169.0,
+          "n_human": 4871.0
+        },
+        "cohere": {
+          "auroc": 0.9902335998353565,
+          "tpr_at_fpr_0.05": 0.9612530915086562,
+          "tpr_at_fpr_0.01": 0.9192085737840066,
+          "n_machine": 1213.0,
+          "n_human": 4871.0
+        },
+        "davinci": {
+          "auroc": 0.846802720424615,
+          "tpr_at_fpr_0.05": 0.6855575868372943,
+          "tpr_at_fpr_0.01": 0.5776965265082267,
+          "n_machine": 1094.0,
+          "n_human": 4871.0
+        },
+        "dolly": {
+          "auroc": 0.819877479631579,
+          "tpr_at_fpr_0.05": 0.5749486652977412,
+          "tpr_at_fpr_0.01": 0.3942505133470226,
+          "n_machine": 487.0,
+          "n_human": 4871.0
+        },
+        "dolly-v2-12b": {
+          "auroc": 0.9813103298752679,
+          "tpr_at_fpr_0.05": 0.9158878504672897,
+          "tpr_at_fpr_0.01": 0.8037383177570093,
+          "n_machine": 107.0,
+          "n_human": 4871.0
+        },
+        "gemma-7b-it": {
+          "auroc": 0.8028507999216461,
+          "tpr_at_fpr_0.05": 0.5644699140401146,
+          "tpr_at_fpr_0.01": 0.45558739255014324,
+          "n_machine": 698.0,
+          "n_human": 4871.0
+        },
+        "gemma2-9b-it": {
+          "auroc": 0.8898184736448299,
+          "tpr_at_fpr_0.05": 0.6942148760330579,
+          "tpr_at_fpr_0.01": 0.5041322314049587,
+          "n_machine": 484.0,
+          "n_human": 4871.0
+        },
+        "gpt-3.5-turbo": {
+          "auroc": 0.9783749718779365,
+          "tpr_at_fpr_0.05": 0.9135802469135802,
+          "tpr_at_fpr_0.01": 0.8460421205519245,
+          "n_machine": 1377.0,
+          "n_human": 4871.0
+        },
+        "gpt4": {
+          "auroc": 0.9849143489210236,
+          "tpr_at_fpr_0.05": 0.9395017793594306,
+          "tpr_at_fpr_0.01": 0.9039145907473309,
+          "n_machine": 562.0,
+          "n_human": 4871.0
+        },
+        "gpt4o": {
+          "auroc": 0.964757159394781,
+          "tpr_at_fpr_0.05": 0.8602540834845736,
+          "tpr_at_fpr_0.01": 0.7368421052631579,
+          "n_machine": 551.0,
+          "n_human": 4871.0
+        },
+        "llama3-70b": {
+          "auroc": 0.8632346835347481,
+          "tpr_at_fpr_0.05": 0.7713004484304933,
+          "tpr_at_fpr_0.01": 0.7533632286995515,
+          "n_machine": 669.0,
+          "n_human": 4871.0
+        },
+        "llama3-8b": {
+          "auroc": 0.8519310870252788,
+          "tpr_at_fpr_0.05": 0.7576564580559254,
+          "tpr_at_fpr_0.01": 0.7403462050599201,
+          "n_machine": 751.0,
+          "n_human": 4871.0
+        },
+        "mixtral-8x7b": {
+          "auroc": 0.8097240171271931,
+          "tpr_at_fpr_0.05": 0.6874265569917744,
+          "tpr_at_fpr_0.01": 0.6568742655699178,
+          "n_machine": 851.0,
+          "n_human": 4871.0
+        },
+        "text-davinci-003": {
+          "auroc": 0.9921438633998542,
+          "tpr_at_fpr_0.05": 0.9396551724137931,
+          "tpr_at_fpr_0.01": 0.8706896551724138,
+          "n_machine": 116.0,
+          "n_human": 4871.0
+        }
+      },
+      "domain": {
+        "arxiv": {
+          "auroc": 0.9132654273976015,
+          "tpr_at_fpr_0.05": 0.8141852286049238,
+          "tpr_at_fpr_0.01": 0.7368112543962485,
+          "n_machine": 1706.0,
+          "n_human": 1233.0
+        },
+        "outfox": {
+          "auroc": 0.7980055698445456,
+          "tpr_at_fpr_0.05": 0.6528565198430004,
+          "tpr_at_fpr_0.01": 0.6153510684692542,
+          "n_machine": 2293.0,
+          "n_human": 127.0
+        },
+        "peerread": {
+          "auroc": 0.903502244710668,
+          "tpr_at_fpr_0.05": 0.7924944812362031,
+          "tpr_at_fpr_0.01": 0.7538631346578366,
+          "n_machine": 906.0,
+          "n_human": 178.0
+        },
+        "reddit": {
+          "auroc": 0.9066075578796818,
+          "tpr_at_fpr_0.05": 0.8152654867256637,
+          "tpr_at_fpr_0.01": 0.7383849557522124,
+          "n_machine": 1808.0,
+          "n_human": 1089.0
+        },
+        "wikihow": {
+          "auroc": 0.7361541976288386,
+          "tpr_at_fpr_0.05": 0.5014970059880239,
+          "tpr_at_fpr_0.01": 0.4221556886227545,
+          "n_machine": 2004.0,
+          "n_human": 1162.0
+        },
+        "wikipedia": {
+          "auroc": 0.9273568776738075,
+          "tpr_at_fpr_0.05": 0.8271954674220963,
+          "tpr_at_fpr_0.01": 0.7854107648725213,
+          "n_machine": 1412.0,
+          "n_human": 1082.0
+        }
+      },
+      "attack": {
+        "none": {
+          "auroc": 0.8454070695784592,
+          "tpr_at_fpr_0.05": 0.707276137822095,
+          "tpr_at_fpr_0.01": 0.6358969296080561,
+          "n_machine": 10129.0,
+          "n_human": 4871.0
+        }
+      }
+    }
+  },
+  "seen_vs_unseen": {
+    "unseen": null
+  },
+  "calibration_transfer": [
+    {
+      "calibration_domain": "arxiv",
+      "eval_domain": "arxiv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0494728304947283,
+      "tpr": 0.8141852286049238
+    },
+    {
+      "calibration_domain": "arxiv",
+      "eval_domain": "outfox",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.031496062992125984,
+      "tpr": 0.6410815525512429
+    },
+    {
+      "calibration_domain": "arxiv",
+      "eval_domain": "peerread",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.011235955056179775,
+      "tpr": 0.7693156732891833
+    },
+    {
+      "calibration_domain": "arxiv",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.08356290174471992,
+      "tpr": 0.8434734513274337
+    },
+    {
+      "calibration_domain": "arxiv",
+      "eval_domain": "wikihow",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.09982788296041308,
+      "tpr": 0.5763473053892215
+    },
+    {
+      "calibration_domain": "arxiv",
+      "eval_domain": "wikipedia",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.10720887245841035,
+      "tpr": 0.8562322946175638
+    },
+    {
+      "calibration_domain": "outfox",
+      "eval_domain": "arxiv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.08840227088402271,
+      "tpr": 0.8370457209847597
+    },
+    {
+      "calibration_domain": "outfox",
+      "eval_domain": "outfox",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.047244094488188976,
+      "tpr": 0.6528565198430004
+    },
+    {
+      "calibration_domain": "outfox",
+      "eval_domain": "peerread",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.033707865168539325,
+      "tpr": 0.7836644591611479
+    },
+    {
+      "calibration_domain": "outfox",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.12396694214876033,
+      "tpr": 0.860066371681416
+    },
+    {
+      "calibration_domain": "outfox",
+      "eval_domain": "wikihow",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.14888123924268504,
+      "tpr": 0.6032934131736527
+    },
+    {
+      "calibration_domain": "outfox",
+      "eval_domain": "wikipedia",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.1645101663585952,
+      "tpr": 0.8675637393767706
+    },
+    {
+      "calibration_domain": "peerread",
+      "eval_domain": "arxiv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.10218978102189781,
+      "tpr": 0.8440797186400938
+    },
+    {
+      "calibration_domain": "peerread",
+      "eval_domain": "outfox",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.07086614173228346,
+      "tpr": 0.6589620584387266
+    },
+    {
+      "calibration_domain": "peerread",
+      "eval_domain": "peerread",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0449438202247191,
+      "tpr": 0.7924944812362031
+    },
+    {
+      "calibration_domain": "peerread",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.16161616161616163,
+      "tpr": 0.8644911504424779
+    },
+    {
+      "calibration_domain": "peerread",
+      "eval_domain": "wikihow",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.17814113597246128,
+      "tpr": 0.6192614770459082
+    },
+    {
+      "calibration_domain": "peerread",
+      "eval_domain": "wikipedia",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.17652495378927913,
+      "tpr": 0.8781869688385269
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "arxiv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0227088402270884,
+      "tpr": 0.7819460726846424
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "outfox",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.023622047244094488,
+      "tpr": 0.6192760575665067
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "peerread",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0056179775280898875,
+      "tpr": 0.7483443708609272
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.049586776859504134,
+      "tpr": 0.8152654867256637
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "wikihow",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06626506024096386,
+      "tpr": 0.530938123752495
+    },
+    {
+      "calibration_domain": "reddit",
+      "eval_domain": "wikipedia",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.06746765249537892,
+      "tpr": 0.8356940509915014
+    },
+    {
+      "calibration_domain": "wikihow",
+      "eval_domain": "arxiv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.016220600162206,
+      "tpr": 0.753810082063306
+    },
+    {
+      "calibration_domain": "wikihow",
+      "eval_domain": "outfox",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.007874015748031496,
+      "tpr": 0.6122982991713912
+    },
+    {
+      "calibration_domain": "wikihow",
+      "eval_domain": "peerread",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0,
+      "tpr": 0.7295805739514348
+    },
+    {
+      "calibration_domain": "wikihow",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.03856749311294766,
+      "tpr": 0.7970132743362832
+    },
+    {
+      "calibration_domain": "wikihow",
+      "eval_domain": "wikihow",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04991394148020654,
+      "tpr": 0.5014970059880239
+    },
+    {
+      "calibration_domain": "wikihow",
+      "eval_domain": "wikipedia",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04251386321626617,
+      "tpr": 0.8229461756373938
+    },
+    {
+      "calibration_domain": "wikipedia",
+      "eval_domain": "arxiv",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0170316301703163,
+      "tpr": 0.764947245017585
+    },
+    {
+      "calibration_domain": "wikipedia",
+      "eval_domain": "outfox",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.015748031496062992,
+      "tpr": 0.6153510684692542
+    },
+    {
+      "calibration_domain": "wikipedia",
+      "eval_domain": "peerread",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.0,
+      "tpr": 0.7406181015452539
+    },
+    {
+      "calibration_domain": "wikipedia",
+      "eval_domain": "reddit",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04040404040404041,
+      "tpr": 0.8030973451327433
+    },
+    {
+      "calibration_domain": "wikipedia",
+      "eval_domain": "wikihow",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.05593803786574871,
+      "tpr": 0.5124750499001997
+    },
+    {
+      "calibration_domain": "wikipedia",
+      "eval_domain": "wikipedia",
+      "target_fpr": 0.05,
+      "achieved_fpr": 0.04990757855822551,
+      "tpr": 0.8271954674220963
+    }
+  ]
+}
