@@ -264,6 +264,39 @@ Appendix E at 1/400 of the training scale. The honest framing matters: mix1's RA
 number is not comparable to the OOD rows in the main table, and we present it
 separately.
 
+---
+
+## 2026-08-11 — Season 2: the M4GT reversal
+
+**Hypothesis.** On a genuinely unseen corpus (M4GT English, via the source-filtered
+COLING-2025 mirror; generators include llama3-8b and gpt4, postdating MAGE), the mix1
+model's RAID gains either transfer (data mixing is a general robustness win) or they
+don't (the mixture overfits RAID's attack styles).
+
+**Result — they don't, and it's worse than neutral.**
+
+| detector | M4GT AUROC | M4GT TPR@5% | M4GT TPR@1% |
+|---|---|---|---|
+| ModernBERT (MAGE only) | **0.920** | **0.783** | **0.674** |
+| Fast-DetectGPT (Neo, zero-shot) | 0.845 | 0.712 | 0.636 |
+| ModernBERT (mix1) | 0.855 | 0.219 | **0.000** |
+| TF-IDF + logreg (MAGE) | 0.793 | 0.376 | 0.145 |
+| Binoculars (0.5B) | 0.735 | 0.532 | 0.379 |
+
+The RAID-attack champion scores literally zero at 1% FPR on M4GT: its human-score
+distribution has a heavy machine-side tail on unseen-domain human text — the exact
+high-confidence-wrong failure mode of Shen et al. (2026), reproduced by our own best
+model. Attack-exposure training specialized the decision boundary to RAID's style of
+text and broke calibration everywhere else. HC3's earlier "improvement" was a mirage
+of an easy, single-generator eval.
+
+**Decision.** The MAGE-only checkpoint is the honest general-purpose release; mix1 is
+published only as a RAID-specialist with an explicit warning. Both are on the Hub:
+[general](https://huggingface.co/jaspai/modernbert-ai-text-detector),
+[raid-mix](https://huggingface.co/jaspai/modernbert-ai-text-detector-raid-mix).
+Lesson recorded: in-benchmark robustness gains must be re-earned on a disjoint corpus
+before being believed — our own pre-registered caveat turned out to be the headline.
+
 **Program close.** Fifteen detector configurations evaluated under one harness;
 two zero-training interventions (normalization, ensembling) taking adversarial-grid
 TPR@1% from 0.124 to 0.582 without RAID exposure; one training intervention (mix1)

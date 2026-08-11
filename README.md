@@ -97,14 +97,24 @@ The full table, and per-generator/domain/attack slices, regenerate with
    for a weak detector varies 2.5×; one identical retrain of ModernBERT moved TPR at
    1% FPR by 7 points. Single-run low-FPR claims near the noise floor, ours included,
    deserve skepticism.
-7. Curated data mixing works as advertised [li2026meld]. Retraining ModernBERT on
-   MAGE plus a stratified RAID sample (every generator, domain, and attack
-   represented) lifted TPR at 1% FPR on the attacked grid from 0.31 to 0.90 (0.95
-   with normalization), left MAGE accuracy unchanged, and improved the fully-OOD HC3
-   check from 0.94 to 0.95. One caution keeps this row out of the figure above: with
-   RAID in training, the RAID grid is no longer out-of-distribution for this model,
-   so its headline number measures attack exposure rather than generalization. The
-   pre-registered caveat and per-eval numbers are in the research log.
+7. Curated data mixing gives with one hand and takes with the other. Retraining
+   ModernBERT on MAGE plus a stratified RAID sample lifted TPR at 1% FPR on the
+   attacked grid from 0.31 to 0.90 and left MAGE accuracy unchanged — but on M4GT, a
+   corpus neither model saw, the mixture model collapses to **0.00** TPR at 1% FPR
+   (0.855 AUROC) while the plain MAGE-only model transfers at 0.674 (0.920 AUROC).
+   Attack exposure specialized the model to RAID's text and broke its calibration on
+   unseen human writing, reproducing the high-confidence-wrong failure mode of
+   [shen2026rethinking] in our own strongest checkpoint. Our pre-registered caveat
+   about the mixture's RAID numbers turned out to be the finding.
+
+## Released models
+
+Two checkpoints are on the Hugging Face Hub, with cards stating metrics and limits:
+[`jaspai/modernbert-ai-text-detector`](https://huggingface.co/jaspai/modernbert-ai-text-detector)
+(recommended: best cross-dataset transfer) and
+[`jaspai/modernbert-ai-text-detector-raid-mix`](https://huggingface.co/jaspai/modernbert-ai-text-detector-raid-mix)
+(RAID-attack specialist; overconfident on out-of-distribution human text — see card
+warning). Pair either with the repository's Unicode normalization preprocessing.
 
 ## 4. What did not work (kept on purpose)
 
