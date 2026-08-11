@@ -58,19 +58,19 @@ def main() -> None:
             f"Output only the continuation.\n\nText: {opening}"
         )
         messages = [{"role": "user", "content": prompt}]
-        ids = tok.apply_chat_template(
-            messages, add_generation_prompt=True, return_tensors="pt"
+        enc = tok.apply_chat_template(
+            messages, add_generation_prompt=True, return_tensors="pt", return_dict=True
         ).to("cuda")
         with torch.no_grad():
             out = model.generate(
-                ids,
+                **enc,
                 max_new_tokens=args.max_new_tokens,
                 do_sample=True,
                 temperature=0.8,
                 top_p=0.95,
                 pad_token_id=tok.eos_token_id,
             )
-        text = tok.decode(out[0][ids.shape[1] :], skip_special_tokens=True).strip()
+        text = tok.decode(out[0][enc["input_ids"].shape[1] :], skip_special_tokens=True).strip()
         if len(text.split()) < 30:
             continue
         rows.append(
