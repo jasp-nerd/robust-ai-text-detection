@@ -22,9 +22,16 @@ MODELS = [
             ("HC3 (cross-dataset)", "results/runs/encoder-modernbert-base-mage/hc3_test.json"),
             ("RAID eval grid, incl. attacks (OOD)", "results/runs/encoder-modernbert-base-mage/raid_eval.json"),
             ("M4GT (cross-dataset)", "results/runs/saved-mage-ood/m4gt_test.json"),
+            ("Frontier Qwen3-2025 probe (cross-generator)", "results/runs/saved-mage-frontier/frontier_test.json"),
         ],
         "training": "MAGE train (318K rows after artifact filtering), 1 epoch, lr 3e-5, 512 tokens.",
-        "warning": "",
+        "warning": (
+            "\n> **Note.** Strong cross-dataset transfer (M4GT), but weak on a 2025-generator "
+            "probe in RAID's continuation format (TPR@1% 0.13) — no single checkpoint is robust "
+            "on every axis; see the repository's research log and consider the companion "
+            "[raid-mix variant](https://huggingface.co/jaspai/modernbert-ai-text-detector-raid-mix) "
+            "or a zero-shot ensemble for coverage.\n"
+        ),
     },
     {
         "dir": "results/runs/modernbert-mix1/model",
@@ -35,6 +42,7 @@ MODELS = [
             ("HC3 (cross-dataset)", "results/runs/modernbert-mix1/hc3_test.json"),
             ("RAID eval grid, incl. attacks (semi-in-distribution)", "results/runs/modernbert-mix1/raid_eval.json"),
             ("M4GT (cross-dataset)", "results/runs/saved-mix1-ood/m4gt_test.json"),
+            ("Frontier Qwen3-2025 probe (RAID-format)", "results/runs/saved-mix1-frontier/frontier_test.json"),
         ],
         "training": "MAGE + stratified RAID train-pool mixture (371K rows, every generator/domain/attack cell), 1 epoch, lr 3e-5, 512 tokens.",
         "warning": (
