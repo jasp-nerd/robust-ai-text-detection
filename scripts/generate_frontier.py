@@ -40,19 +40,23 @@ def main() -> None:
     humans = (
         raid.filter((pl.col("label") == 0) & (pl.col("attack") == "none"))
         .filter(pl.col("domain").is_in(list(PROMPTS)))
-        .unique(subset=["title"], keep="first")
+        .unique(subset=["text"], keep="first")
         .group_by("domain", maintain_order=True)
         .head(args.per_domain)
     )
     print(f"seed titles: {len(humans)} across {humans['domain'].n_unique()} domains")
 
     tok = AutoTokenizer.from_pretrained(MODEL)
-    model = AutoModelForCausalLM.from_pretrained(MODEL, torch_dtype=torch.float16)
+    model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.float16)
     model.to("cuda").eval()
 
     rows = []
     for r in tqdm(humans.iter_rows(named=True), total=len(humans), desc="generate"):
-        prompt = PROMPTS[r["domain"]].format(title=r["title"])
+        opening = " ".join(r["text"].split()[:30])
+        prompt = (
+            f"Continue the following {r['domain']} text naturally for about 300 words. "
+            f"Output only the continuation.\n\nText: {opening}"
+        )
         messages = [{"role": "user", "content": prompt}]
         ids = tok.apply_chat_template(
             messages, add_generation_prompt=True, return_tensors="pt"

@@ -1,0 +1,12 @@
+# Eval-only: saved mix1 checkpoint on the frontier (Qwen3) test set.
+name: saved-mix1-frontier
+seed: 0
+model:
+  type: encoder
+  model_name: results/runs/modernbert-mix1/model
+  max_tokens: 512
+  batch_size: 32
+train: null
+eval:
+  - dataset: frontier
+    split: test

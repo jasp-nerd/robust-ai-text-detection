@@ -1,0 +1,10 @@
+name: fdg-neo-frontier
+seed: 0
+model:
+  type: fast_detect_gpt
+  scorer: EleutherAI/gpt-neo-2.7B
+  max_tokens: 512
+train: null
+eval:
+  - dataset: frontier
+    split: test

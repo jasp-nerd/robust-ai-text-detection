@@ -42,7 +42,7 @@ class Binoculars:
                 "observer and performer must share a tokenizer (Binoculars requirement)"
             )
         # 8-bit lets the Falcon-7B pair (~29GB bf16) fit a 24GB card (CUDA only).
-        kwargs: dict = {"torch_dtype": dtype}
+        kwargs: dict = {"dtype": dtype}
         if load_in_8bit:
             from transformers import BitsAndBytesConfig
 
@@ -51,7 +51,7 @@ class Binoculars:
                 "device_map": {"": 0},
                 # keep non-quantized modules (embeddings, lm_head, norms) in fp16 —
                 # letting them default to fp32 OOMed the second model of the pair
-                "torch_dtype": torch.float16,
+                "dtype": torch.float16,
             }
         self.observer = AutoModelForCausalLM.from_pretrained(observer, **kwargs)
         self.performer = AutoModelForCausalLM.from_pretrained(performer, **kwargs)

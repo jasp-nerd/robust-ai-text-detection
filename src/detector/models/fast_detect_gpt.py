@@ -44,11 +44,11 @@ class FastDetectGPT:
         dtype = torch.float16 if self.device != "cpu" else torch.float32
         self.max_tokens = max_tokens
         self.tokenizer = AutoTokenizer.from_pretrained(scorer)
-        self.score_model = AutoModelForCausalLM.from_pretrained(scorer, torch_dtype=dtype)
+        self.score_model = AutoModelForCausalLM.from_pretrained(scorer, dtype=dtype)
         self.score_model.to(self.device).eval()
         self.sample_model = None
         if sampler and sampler != scorer:
-            self.sample_model = AutoModelForCausalLM.from_pretrained(sampler, torch_dtype=dtype)
+            self.sample_model = AutoModelForCausalLM.from_pretrained(sampler, dtype=dtype)
             self.sample_model.to(self.device).eval()
 
     def fit(self, texts: list[str], labels: np.ndarray) -> FastDetectGPT:
