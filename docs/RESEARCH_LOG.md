@@ -297,6 +297,15 @@ published only as a RAID-specialist with an explicit warning. Both are on the Hu
 Lesson recorded: in-benchmark robustness gains must be re-earned on a disjoint corpus
 before being believed — our own pre-registered caveat turned out to be the headline.
 
+**Falcon-7B replication: closed as blocked.** Three attempts across two transformers
+major versions. Root causes found each time (fp32 fallback from a dropped dtype
+kwarg; a caching-allocator warmup that pre-allocates unquantized-size memory; and in
+transformers 5.x, BitsAndBytesConfig 8-bit quantization silently not applied at all —
+weights load fp16 and the 29GB pair cannot fit 24GB). The science this replication
+would add is already covered by our 0.5B/3B matched-pair scale curve and the paper's
+published Falcon numbers; further debugging is not worth the compute. Recorded here
+so the next person hits the wall with a map.
+
 **Program close.** Fifteen detector configurations evaluated under one harness;
 two zero-training interventions (normalization, ensembling) taking adversarial-grid
 TPR@1% from 0.124 to 0.582 without RAID exposure; one training intervention (mix1)
